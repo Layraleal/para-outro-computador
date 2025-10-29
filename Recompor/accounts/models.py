@@ -6,6 +6,9 @@ FOTOS_CHOICES = [
     ("foto1.png", "Foto 1"),
     ("foto2.png", "Foto 2"),
     ("foto3.png", "Foto 3"),
+    ("foto4.png", "Foto 4"),
+    ("foto5.png", "Foto 5"),
+    ("foto6.png", "Foto 6"),
 ]
 
 # 2. Modelo Perfil
