@@ -1,0 +1,125 @@
+#arvores{
+    flex-direction: column;
+    border: none;
+    display: flex;
+    font-size: 17px;
+    align-content: center;
+    /* Configurção do gif*/
+    background-image: url(/static/img/fundo-paisagem.gif);
+    background-position: bottom;
+    background-attachment: fixed;
+    background-repeat: repeat-x;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    margin-bottom: 50px; 
+    margin-top: 50px;
+   
+ 
+        
+}
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px; /* Define a borda arredondada */
+    border: none;
+    background-color: #e2e2e2; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+
+img{
+    width: 40px;
+	margin-top: 5px;
+    opacity: 0.5;
+    
+}
+
+.title {
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    color: #333;
+}
+
+h1{
+    font-size: 27px;
+}
+
+.reset-container {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.reset-container h1 {
+    margin-bottom: 20px;
+    font-size: 25px;
+    color: #333;
+}
+.reset-container p {
+    margin-bottom: 20px;
+    color: #666;
+}
+.reset-container input[type="email"] {
+    width: 100%;
+    padding: 10px 1px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    
+}
+.reset-container input[type="password"] {
+    width: 100%;
+    padding: 10px 1px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    
+    
+}
+
+.reset-container button {
+    width: 100%;
+    padding: 10px;
+    background-color:#2eac51;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+.reset-container button:hover {
+    color: #ffffff;
+    background-color:#36c75f;
+}
+
+.form-group {
+    margin-bottom: none;
+}
+
+.button-reset {
+    width: 100%;
+    padding: 10px;
+    background-color:#ffffff;
+    border: none;
+    border-radius: 8px;
+    color: #000000;
+    font-size: 16px;
+    cursor: pointer;
+    border-color: #000000;
+
+}
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-radius: 8px;
+    padding: 10px 1px;
+}

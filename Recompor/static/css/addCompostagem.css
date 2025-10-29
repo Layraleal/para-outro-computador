@@ -1,0 +1,284 @@
+/*------ FONTES ------*/
+@font-face{
+	font-family: "Pro";
+	src: url("Arista-Pro-Alternate-Bold-trial.ttf") format("truetype");/*Não é a mesma fonte - consultar direitos autorais*/
+
+}
+@font-face{
+	font-family: "Nunito";
+	src: url("Nunito-SemiBold.ttf") format("truetype");
+}
+@font-face{
+	font-family: "NunitoB";
+	src: url("Nunito-Bold.ttf") format("truetype");
+}
+
+/* Configurações do Body*/
+#addcompostagem{
+    margin: .1px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    overflow: auto;
+    /* Configurção do gif*/
+    background-image: url(/static/img/fundo-paisagem.gif);
+    background-position: bottom;
+    background-attachment: fixed;
+    background-repeat: repeat-x;
+}
+
+#form{
+    height: 500px;
+}
+
+
+/* Div principal para centralização */
+#container_compostagem{
+    display: flex;
+    height: 545px;
+    width: 1000px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Div menor(lado  esquerdo) com a composteira escolhida pelo usuário */
+#container_composteira{
+    width: 40%;
+    min-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+#saudacao{
+    font-size: 2rem;
+    font-family: NunitoB;
+    justify-content: center;
+}
+#folha-composteira{
+    width: 150px;
+}
+#composteira{
+    background-color: #f4f4f4;
+    width: 88%;
+    border-radius: 30px;
+    border: solid 2px #146734 ;
+    display: flex;
+    flex-direction: column;
+    opacity: 95%;
+   
+}
+
+#composteiras{
+    margin: 10px;
+    height: 200px;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+::-webkit-scrollbar{
+    margin-right: 20px;
+    border-radius: 10px;
+    width: 10px;
+    background-color: #f4f4f4;
+    height: 80%;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #7F9838;
+    border-radius:10px ;
+    width: 8px;
+}
+
+.img-name{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.foto-comp{
+    width: 95px;
+    height: 85px;
+}
+
+.nome-comp{
+    font-family: NunitoB;
+    font-size: 20px;
+    color:#329813;
+    padding-right: 20px;
+    text-decoration: none;
+}
+
+.foto-comp{
+    width: 100px;
+    height: 90px;
+    border: 2px solid #A9C435;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+
+.dados{
+    margin-left: 10px;
+    padding-bottom: 20px;
+    font-size: 1.6rem;
+    font-family: Nunito;
+}
+/* Fim */
+
+/* Div com o formulário para cadastrar nova compostagem */
+#formAdicao{
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 50%;
+    height: 80%;
+    border: 2px solid #41671D;
+    border-radius: 30px;
+    justify-content: center;
+    opacity: 95%;
+}
+
+#titulo-comp{
+    font-family: NunitoB;
+    font-size: 2rem;
+    text-align: center;
+}
+#comp-nome,#estimativa{
+    font-family: NunitoB;
+    font-size: 1.6rem;
+    padding: 10px;
+}
+#inserir-data{
+    font-size: 1.6rem;
+    font-family: NunitoB;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#data_compost{
+    width: 90%;
+    font-family: NunitoB;
+    margin-left: 10px;
+    background-color: transparent;
+    border:0px;
+    border-bottom: solid 2px #41671D;
+}
+#inserir-peso{
+    font-size: 1.6rem;
+    font-family: NunitoB;
+    height: 30px;
+    background-color: #f4f4f4;
+    border: 2px solid #41671D;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+}
+#inserir-peso label{
+    padding: 5px;
+}
+#inserir-peso input{
+    padding: 5px;
+    background-color: transparent;
+    width: 50%;
+    border: 0px; 
+}
+    /* Configuração para retirar as setinhas do input */
+#inserir-peso input::-webkit-inner-spin-button  { 
+    -webkit-appearance: none;
+ }
+
+#inserir-peso input:focus,#data_compost{
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+#enviar_compos{
+    background-color: #7F9838;
+    width: 100px;
+    padding: 5px;
+    font-family: Nunito;
+    font-size: 1.6rem;
+    border-radius: 20px;
+    border: 0px;
+    margin-bottom: 10px;
+}
+#enviar_compos:hover{
+    color: white;
+}
+#inserir-data,#inserir-peso{
+    margin: 10px;
+}
+/* Fim */
+
+
+/* Configurções para respansibilidade*/
+@media(max-width:960px){
+    #container_compostagem{
+        width: 900px;
+    }
+    #container_composteira{
+        width: 200px;
+    }
+    .foto-comp{
+        width: 80px;
+        height: 70px;
+    }
+    .nome-comp{
+        font-family: NunitoB;
+        font-size: 15px;
+    }
+    #composteiras{
+        height: 180px;
+    }
+
+}
+@media(max-width:780px){
+   #container_compostagem{
+    width: 665px;
+    height: 440px;
+    align-items: flex-end;
+   }
+   #formAdicao{
+    height: 325px;
+   }
+   #composteira{
+    height: 230px;
+   }
+}
+
+@media (max-width:650px) {
+    #addcompostagem{
+        height: 100vh;
+        overflow: auto;
+    }
+    #saudacao{
+        margin: 10px;
+    }
+    #container_compostagem{
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        top: 200px;
+    }
+    #container_composteira, #formAdicao{
+        margin-bottom: 25px;
+    }
+    #inserir-peso{
+        width: 150px;
+    }
+    #inserir-data{
+        width: 150px;
+    }
+}
+
+@media (max-width:350px) {
+    #formAdicao{
+        width: 250px;
+    }    
+}

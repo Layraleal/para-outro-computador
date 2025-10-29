@@ -1,0 +1,157 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        
+        <div class="content first-content">
+            <div class="first-column">
+                <h2 class="title title-primary">Olá Usúario!</h2>
+                <p class="description description-primary">Venha ser mais um de nós</p>
+                <p class="description description-primary">e tornar o mundo um lar mais verde. </p>
+                <a href="{% url 'usuarios:entrar' %}"><button class="btn btn-primary">Cadastrar</button></a> <!--#id="signup" -->
+            </div>
+            <div class="second-column">
+                <h2 class="title title-second" style="align-items: last baseline; height: 60px; font-size: 30px;">Bem-vindo</h2>
+              
+                <!-- formulario login -->
+                
+                
+                <form  action="{% url 'usuarios:logar' %}" id="form_contato" class="form" method="POST">
+                    {% csrf_token %}
+                    <label  class="label-input" for="text_nome">
+                        <i class="far fa-user icon-modify"></i>
+                        <input type="text"  id="txt_nome" required placeholder="Nome de usuário" name="username">
+                    </label>
+               
+                    <label class="label-input" for="">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input type="password"  id="senha" placeholder="Senha" name="senha">
+                        <i class="bi bi-eye" style="width: 30px;cursor: pointer; color: #808080;" id="btn-senha" onclick="mostraSenha()"></i>
+                    </label>
+                    <script></script>
+                
+                    
+                    <a  class="password" href ="{% url 'password_reset' %}" >Esqueceu a senha?</a>
+                    <button class="btn btn-second">Login</button>
+                </form>
+            </div><!-- second column -->
+        </div><!-- second-content -->
+
+
+
+
+
+        <div class="content second-content">
+            <div class="first-column">
+                <h2 class="title title-primary">Bem-vindo de volta!</h2>
+                <p class="description description-primary">Para se manter conectado</p>
+                <p class="description description-primary">Venha fazer login!!</p>
+                <button id="signin" class="btn btn-primary">entrar</button>
+            </div>    
+            <div class="second-column">
+                <h2 class="title title-second" style="font-size: 30px;">criar conta</h2>
+                <div class="max-width">
+                    <!-- Icone de trocar de foto do usuario -->
+                    <div class="imageContainer" style="width: 50px; align-items: center; height: 80px;">
+                        <img src="{% static 'img/icon_user.png' %}" alt="Selecione uma imagem" id="imgPhoto">
+                        
+                    </div>
+                    
+             </div>
+             <input type="file" id="flImage" name="fImage" accept="image/*">
+            
+              <!-- formulario cadastro 
+                
+                <form  action="{% url 'usuarios:entrar' %}" id="form_contato" class="form" method="post">
+                    {% csrf_token %}
+                    <label  class="label-input" for="text_nome">
+                        <i class="far fa-user icon-modify"></i>
+                        <input type="text"  id="txt_nome" required placeholder="Nome" name="username">
+                    </label>
+                    
+                    <label class="label-input" for="txt_email">
+                        <i class="far fa-envelope icon-modify"></i>
+                        <input type="email"  id="txt_email" required placeholder="Email" name="email">
+                    </label>
+                    
+                    <label class="label-input" for="">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input type="password" id="password" minlength="6" maxlength="12" onKeyUp="verificaForcaSenha();" placeholder="Senha" name="senha">
+                         <i class="bi bi-eye" style="width: 30px;cursor: pointer;color: #808080;" id="btn-senha-C" onclick="mostraSenhaCadastro()"></i>
+                        <span class="lnr lnr-eye"></span>
+                    </label>
+                    <span id="password-status"></span>
+                    <script
+                    src="https://code.jquery.com/jquery-3.5.1.min.js"
+                    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+                    crossorigin="anonymous">
+                    </script>
+                    -->
+                    <!--Para o usuario digitar uma senha de acordo e ditando uma mensagem de a senha e fraca, media, forte
+                    <script>
+                    function verificaForcaSenha() 
+                    {
+                        var numeros = /([0-9])/;
+                        var alfabeto = /([a-zA-Z])/;
+                        var chEspeciais = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
+
+                        if($('#password').val().length<6) 
+                        {
+                            $('#password-status').html("<span style='color:red;FONT-SIZE: 12PX;'>Fraco, insira no mínimo 6 caracteres</span>");
+                        } else {  	
+                            if($('#password').val().match(numeros) && $('#password').val().match(alfabeto) && $('#password').val().match(chEspeciais))
+                            {            
+                                $('#password-status').html("<span style='color:green;FONT-SIZE: 12PX;'><b>Forte</b></span>");
+                            } else {
+                                $('#password-status').html("<span style='color:orange;FONT-SIZE: 12PX;'>Médio, insira um caracter especial</span>");
+                            }
+                        }
+                    }
+                    </script>
+
+                --> 
+
+                    
+                     <!--Link para termo de compromissos
+                <div><h2>
+                    <input id="caixa" type="checkbox">
+                    <a href="#" id="priv" >Política de Privacidade</a></input>
+                </h2>
+                </div>
+                    <button class="btn btn-second">Cadastro</button>        
+                </form>
+                -->  
+            </div><!-- second column -->
+        
+        </div><!-- first content -->
+
+    </div>
+    
+    <!-- onde a magia acontece-->
+    <script src="{% static 'js/animaLC.js' %}"></script>
+
+    <!--integração do VLibras-->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+</body>
+</html>

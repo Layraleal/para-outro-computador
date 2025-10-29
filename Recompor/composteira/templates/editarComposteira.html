@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recompor</title>
+    <link rel = "stylesheet" href="{% static 'css/editarComposteira.css' %}">
+    <script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>
+</head>
+<body id="editarComposteira">
+    <header>{% include "navbar.html" %}</header>
+    <div id="formulario">
+        <div id="pag-new-comp">
+            <h1 id="titulo-nova">Editar Composteira</h1>
+           
+                <form method="post">
+                    {% csrf_token %}
+
+
+                    <div id="alinha-divs">
+                        <div id="linha0">
+                            <section class='img-name'>
+                                {% if composteira.imagem %}
+                                    <img class = 'foto-comp' src="{{ composteira.imagem.url }}" alt="Foto da composteira">
+                                {% else %}
+                                    <img class = 'foto-comp' src="{% static 'img/composteiraSemFoto.png' %}" alt="Sem imagem">
+                                {% endif %}
+
+                            </section>
+                            <button class = "" type="button" onclick="document.getElementById('inputFoto').click()">Trocar foto</button>
+                            <input type="file" name="imagem" id="inputFoto" accept="image/*" style="display: none;" onchange="previewFoto(this)">
+                     
+                    </div>
+                          
+                    <div id = "linha1">
+                        <p  class = "caracteristicas-comp">Composteira</p>
+                        <select  id = "sus" class = "caracteristicas-comp-tipo" name="tipo" required><br>
+                            <option name="tipo" class = "caracteristicas-comp-tipo" value = "">Selecione</option>
+                            <option name="tipo" class = "caracteristicas-comp-tipo" value = Terra>Terra</option>
+                            <option name="tipo" class = "caracteristicas-comp-tipo" value = Caixa>Caixa</option>
+                            <!-- <option value = leiras>Leiras</option> -->
+                        </select>
+                    </div>
+
+
+                    <!-- <div id = "linha2">
+                        <p class = "caracteristicas-comp">Com minhoca</p>
+                        <p class = "caracteristicas-comp" name="minhoca">
+                            <input type="radio" name="c_minhoca" class = marcar value = "True">Sim
+                            <input type="radio" name="c_minhoca"  class = marcar value = "False">Não
+                        </p>
+                    </div> -->
+
+
+
+
+                    <div id= "linha3">
+                    <p class = "caracteristicas-comp">Região</p>
+                    <select id = "sus" class = "caracteristicas-comp-regiao" name="regiao" value="{{ composteira.regiao }}" required><br>
+                        <option name="regiao" value = "">Selecione</option>
+                        <option name="regiao" value = Norte>Norte</option>
+                        <option name="regiao" value = Nordeste>Nordeste</option>
+                        <option name="regiao" value = Sul>Sul</option>
+                        <option name="regiao" value = Sudeste>Sudeste</option>
+                        <option name="regiao" value = Centro-Oeste>Centro-Oeste</option>
+                    </select>
+                    </div>
+
+
+
+
+                    <!--div id ="linha4"></div-->
+
+
+
+                    <div id="linha5">
+                        <p class="caracteristicas-comp">Data</p>
+                        <input id="data-composteira" type="date" class="caracteristicas-comp" name="data_const" value="{{ composteira.data_construcao|date:'Y-m-d' }}" required>
+                    </div>
+
+
+                    <div id = "linha6">
+                        <p class = "caracteristicas-comp">Nome</p>
+                        <input class = alt type="text" id="name_comp" value="{{ composteira.nome }}"  name="name_comp" required/><br>
+                    </div>
+
+
+                   
+
+
+                    <div id = "butao">
+                    <!--<button id = "button-minhaComp"><a href="{% url 'composteira:graficoGeral' %}">Cancelar</a></button>-->
+                    <button id="button-minhaComp" type="submit">Salvar</button>
+                    </div>
+
+
+                </form>
+            </div>
+
+
+           
+    </div>
+    <div id="mensagem">
+        <h1>Ajudando a dar um novo rumo para a sua matéria orgânica.</h1>
+    </div>
+</body>
+</html>

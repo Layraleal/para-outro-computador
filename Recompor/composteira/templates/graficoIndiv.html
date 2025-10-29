@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Recompor</title>
+	<script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/estiloGraficoIndiv.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        {% include 'navbar.html' %}
+    </header>
+
+    <h1 id="bem-vindo">Olá, {{ user.get_username }}!</h1>
+    <h3 id="area">Composteiras Individuais</h3>
+    <div id="container">
+        
+        
+        <div id="lado1">
+            <div class="swiper mySwiper">
+                <div id="todas-comp" class="swiper-wrapper">
+                    {% for composteira in composteiras %}
+                    <div class="swiper-slide">
+                        <div class="comp-dados">
+                            <div>
+                                <section class='img-name'>
+                                    {% if composteira.imagem %}
+                                        <img class = 'foto-comp' src="{{ composteira.imagem.url }}" alt="Foto da composteira">
+                                    {% else %}
+                                        <img class = 'foto-comp' src="{% static 'img/composteiraSemFoto.png' %}" alt="Sem imagem">
+                                    {% endif %}
+                                    
+                                    <p id="nome-comp">{{ composteira.nome }}</p>  
+                                </section>
+
+                                <section class="dados">
+                                    <p>Construída: {{ composteira.data_construcao }}</p>
+                                    <p>Tipo: {{ composteira.tipo }}</p>
+                                </section>
+                            </div>
+
+                            <div id="status">
+                                <p class="titulo-sombra">Compostagens</p>
+                                <div id="drop-down">
+                                    <select id="sub-div1">
+                                        <option value="mes-atual">Mês atual</option>
+                                        <option value="mes-passado">Mês passado</option>
+                                        <option value="mes-retrasado">Mês retrasado</option>
+                                        
+                                    </select>
+                                    <select id="sub-div2">
+                                        <option value="mais-detalhes">Mais detalhes</option>
+                                        <option value="escolher-mes">Escolher outro mês</option>
+                                    </select>
+                                </div>
+                                <a>
+                                    {% for compostagem in compostagens %}
+                                        {% if compostagem.fkComposteira.id_composteira == composteira.id_composteira %} 
+                                        <section class="data-compostagem">
+                                            <p>Feita dia: {{ compostagem.data_inicio }}</p>
+                                            <p>Pronta dia: {{compostagem.data_pronto}}</p>
+                                        </section>
+                                        <section class="reducao">
+                                            <p>Quantidade: {{ compostagem.peso }} kg</p>
+                                        </section>
+                                        {% endif %}
+                                    {% endfor %}
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="nova-comp">
+                            <button id="adicionar-comp">
+                                <a class="aaa" href="{% url 'composteira:addCompostagem' %}">Adicionar compostagem</a>
+                                <img id="seta-tutorial" src="{% static 'img/seta-tutorial.png' %}">
+                            </button>
+                        </div>
+
+                         <div id="lado2">
+                        <div id="grafico">
+                            <h2 style="color: #7F9838">Gráfico Individual</h2>
+
+                            <div id="dados-graficos-{{ composteira.id_composteira }}">
+                            <p class="texto-reducao">Você deixou de emitir: 0 kg de CO₂ no ambiente</p>
+                            </div>
+
+                            <div id="selects">
+                            <select class="periodo" data-id="{{ composteira.id_composteira }}">
+                                <option value="mes-atual">Este mês</option>
+                                <option value="mes-passado">Mês passado</option>
+                                <option value="ano">Esse ano</option>
+                                <option value="personalizado">Escolher outro mês</option>
+                            </select>
+                            <input type="month" class="mes-personalizado" data-id="{{ composteira.id_composteira }}" style="display:none;">
+                            </div>
+
+                            <canvas id="line-chart-{{ composteira.id_composteira }}"></canvas>
+                        </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                </div> 
+            </div>
+
+            <script>
+                const compostagensData = {{ dados|safe }};
+                const charts = {};
+
+                function calcularSeries(pesos) {
+                const seria = pesos.map(p => p * 1000 * 0.85);
+                const foi = pesos.map(p => p * 1000 * 0.084);
+                return { seria, foi };
+                }
+
+                function filtrarPorPeriodo(dados, periodo, mesCustomizado = null) {
+                const hoje = new Date();
+                const inicio = new Date(hoje);
+
+                if (periodo === "mes-atual") {
+                    inicio.setDate(1);
+                } else if (periodo === "mes-passado") {
+                    inicio.setMonth(hoje.getMonth() - 1);
+                    inicio.setDate(1);
+                    hoje.setMonth(hoje.getMonth() - 1);
+                } else if (periodo === "ano") {
+                    inicio.setMonth(0);
+                    inicio.setDate(1);
+                } else if (periodo === "personalizado" && mesCustomizado) {
+                    const [ano, mes] = mesCustomizado.split("-");
+                    inicio.setFullYear(ano, mes - 1, 1);
+                    hoje.setFullYear(ano, mes, 0);
+                }
+
+                const filtradas = dados.datas.map((d, i) => {
+                    const data = new Date(d);
+                    return data >= inicio && data <= hoje ? i : null;
+                }).filter(i => i !== null);
+
+                return {
+                    labels: filtradas.map(i => dados.labels[i]),
+                    pesos: filtradas.map(i => dados.pesos[i])
+                };
+                }
+
+                function atualizarGrafico(id, periodo, mesCustomizado = null) {
+                const dados = compostagensData[id];
+                const filtrados = filtrarPorPeriodo(dados, periodo, mesCustomizado);
+                const { seria, foi } = calcularSeries(filtrados.pesos);
+
+                const totalReducao = ((seria.reduce((a,b)=>a+b,0) - foi.reduce((a,b)=>a+b,0)) / 1000).toFixed(2);
+                document.querySelector(`#dados-graficos-${id} .texto-reducao`).textContent =
+                    `Você deixou de emitir: ${totalReducao} kg de CO₂ no ambiente`;
+
+                const grafico = charts[id];
+                grafico.data.labels = filtrados.labels;
+                grafico.data.datasets[0].data = seria;
+                grafico.data.datasets[1].data = foi;
+                grafico.update();
+                }
+
+                // Inicialização de todos os gráficos
+                Object.entries(compostagensData).forEach(([id, dados]) => {
+                const ctx = document.getElementById(`line-chart-${id}`).getContext("2d");
+                const { seria, foi } = calcularSeries(dados.pesos);
+
+                charts[id] = new Chart(ctx, {
+                    type: "line",
+                    data: {
+                    labels: dados.labels,
+                    datasets: [
+                        { label: "O que seria emitido", data: seria, borderColor: "#DD0802", backgroundColor: "#DD0802", borderWidth: 3, fill: false },
+                        { label: "O que foi emitido", data: foi, borderColor: "#CDF3E5", backgroundColor: "#CDF3E5", borderWidth: 3, fill: false }
+                    ]
+                    },
+                    options: {
+                    responsive: true,
+                    scales: { 
+                        y: { 
+                            beginAtZero: true, 
+                            title: { display: true, text: 'g CO₂' } 
+                        } 
+                    },
+                    plugins: { 
+                        legend: { position: 'top' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.formattedValue} g`;
+                                }
+                            }
+                        }
+                    }
+                }
+    });
+
+                // listeners dos selects
+                document.querySelector(`.periodo[data-id="${id}"]`).addEventListener("change", e => {
+                    const periodo = e.target.value;
+                    const inputMes = document.querySelector(`.mes-personalizado[data-id="${id}"]`);
+
+                    if (periodo === "personalizado") {
+                    inputMes.style.display = "inline-block";
+                    } else {
+                    inputMes.style.display = "none";
+                    atualizarGrafico(id, periodo);
+                    }
+                });
+
+                document.querySelector(`.mes-personalizado[data-id="${id}"]`).addEventListener("change", e => {
+                    atualizarGrafico(id, "personalizado", e.target.value);
+                });
+
+                atualizarGrafico(id, "mes-atual"); // inicia mostrando mês atual
+                });
+            </script>
+
+            <script src="{% static 'js/navegacao.js' %}"></script>
+            <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+            <script src="{% static 'js/tamanho2.js' %}"></script>
+    </body>
+    </html>

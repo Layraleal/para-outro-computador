@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Recompor</title>
+	<link rel = "stylesheet" href = "{% static 'css/tutorial.css' %}">
+	<script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body id = "tut">
+    <header>
+        {%include 'navbar.html'%}
+    </header>
+
+<div id = "tutorialPag">
+    <p id = "sub" >COMO FAZER</p>
+    <div class="slides">
+    <div class="container" style="position: relative;">
+        
+        <div class="slide">
+                <section class="qF1">
+                    <img src="{% static 'img/folhas_arq.png' %}" id="folha-tutoT" alt="folha tuto" >    
+                    <img class="num" src="{% static 'img/n1.png' %}">
+                    <h1>Passo</h1>
+                    <h3>Cave um buraco de aproximadamente 30cm de profundidade para colocar os resíduos. </h3>
+                </section>
+                <section class=qF2>
+                    <img class="num" src="{% static 'img/n2.png' %}">
+                    <h1>Passo</h1>
+                    <h3>Coloque a terra, os resíduos que foram guardados e as folhas ou serragem. </h3>
+                </section>
+                <section class=qF3>
+                    <img class="num" src="{% static 'img/n3.png' %}">
+                    <h1>Passo</h1>
+                    <h3>Misture os resíduos uniformemente  e cubra o buraco com um fina camada de terra. </h3>
+                </section>
+        </div>
+    </div>
+    </div>
+
+    <div id="fim">  
+        
+        <section>
+            <img id="dicatuto" src="{% static 'img/dica.png' %}" >
+            <p id= "text-dicatuto">O húmus é uma substância formada por matéria orgânica em decomposição, rica em nutriente e um adubo para suas plantas.</p>
+        </section>
+    </div>
+
+    <div class="nova-compostagem" style="margin-top: 5rem;">
+        <a  class = aaa href = "{% url 'composteira:addCompostagem' %}"><button id = "cadastrar-compostagemT">Cadastrar Compostagem<img id = seta-compostagem src="{% static 'img/seta-tutorial.png' %}"></button></a>
+    </div>
+</div>
+
+    <script src="{% static 'js/navegacao.js' %}"></script>
+</body>
+</html>

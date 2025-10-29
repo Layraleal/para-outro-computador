@@ -1,0 +1,271 @@
+@font-face{
+	font-family: "Pro";
+	src: url("Arista-Pro-Alternate-Bold-trial.ttf") format("truetype");/*Não é a mesma fonte - consultar direitos autorais*/
+
+}
+	
+@font-face{
+	font-family: "Nunito";
+	src: url("Nunito-SemiBold.ttf") format("truetype");
+}
+
+@font-face{
+	font-family: "NunitoB";
+	src: url("Nunito-Bold.ttf") format("truetype");
+}
+::-webkit-scrollbar{
+    margin-right: 20px;
+    border-radius: 10px;
+    width: 10px;
+    background-color: #f4f4f4;
+    height: 80%;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #7F9838;
+    border-radius:10px ;
+    width: 8px;
+}
+
+#container{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   align-items: center;
+
+
+}
+
+#bem-vindo{
+    text-align:  center;
+    margin-top: 150px;
+    font-family: NunitoB;
+    margin-bottom: 5px;
+}
+
+#area{
+    text-align:  center;
+    margin-top: 5px;
+    font-family: Nunito;
+}
+
+.quadrado{
+    background-color: #CCCBC9;
+    width: 250px;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.quadrado p{
+    font-family: Nunito;
+    padding-left: 20px;
+}
+
+.img-name{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.foto-comp{
+    width: 100px;
+    height: 90px;
+    border: 2px solid #A9C435;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+
+.nome-comp{
+    font-family: NunitoB;
+    font-size: 20px;
+    color:#329813;
+    padding-right: 20px;
+    text-decoration: none;
+}
+.nome-comp a{
+    text-decoration: none;
+    color: #329813;
+}
+.nome-comp a:hover{
+    color: #345317;
+}
+
+.dados{
+    padding-bottom: 20px;
+    border:none;
+}
+
+#lado1{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#lado2{
+    width: 90%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.d{
+    list-style-type: none;
+}
+
+#grafico{
+    justify-content: center;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    /* width: 85%; */
+    width: 900px;
+    border: solid 3px #345317;
+    border-radius: 20px;
+    margin-bottom: 60px;
+}
+
+#selects{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+
+}
+
+#grafico h2{
+    font-family: NunitoB;
+    font-size: 25px;
+    margin-bottom: 0px;
+
+}
+
+#grafico p{
+    font-family: Nunito;
+    font-size: 20px;
+    margin:15px;
+}
+
+#selects select{
+    border:0px;
+    padding-left: 20px;
+    margin-bottom: 0px;
+    font-family: Nunito;
+    font-size: 15px;
+}
+
+.swiper{
+    width: 100%;
+    margin: 5%;
+}
+
+.swiper-wrapper{
+    position: relative;
+    width: 50%;
+    height: 50%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    transition-timing-function: var(--swiper-wrapper-transition-timing-function,initial);
+    box-sizing: content-box;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 50px;
+    padding-right: 50px;
+    
+}
+
+.swiper-slide{
+    flex-shrink: 0;
+    margin: auto;
+    position: relative;
+    transition-property: transform;
+    display: block;
+    
+}
+.dados p{
+    font-family: Nunito;
+    font-size: 15px;
+}
+
+.swiper-button-next, .swiper-button-prev{
+    color: #345317;
+    
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover{
+    color: #A9C435;
+}
+
+:root {
+    --swiper-theme-color: #345317;
+}
+
+
+.aaa{
+	text-decoration: none;
+	color: #000000;
+	display: flex;
+    justify-content: flex-end;
+}
+
+#adicionar-comp{
+	padding: 10px;
+	border-radius: 15px;
+	font-family: NunitoB;
+	font-size: 1.8rem;
+	display: flex;
+	text-align: center;
+	background-color: #7F9838;
+	border:0px;
+	width: 225px;
+	height: 60px;
+	align-items: center;
+	margin: 20px;
+}
+
+#adicionar-comp:hover{
+	color:#ffffff;
+}
+
+#seta-tutorial{
+	width: 50px;
+	height: 30px;
+	padding-left: 10px;
+}
+
+.nova-comp{
+    position: relative;
+}
+
+#organiza-comps{
+    display: flex;
+}
+#graf-ED{
+    font-family: NunitoB;
+    font-size: 15px;
+    color: #329813;
+    text-decoration: none;
+}
+#graf-EX{
+    font-family: NunitoB;
+    font-size: 15px;
+    color:#329813;
+    padding: 10px;
+    border: 50px;
+    text-decoration: none;
+}
+#graf-ED:hover{
+    color:#345317;
+}
+#graf-EX:hover{
+    color:#345317;
+}

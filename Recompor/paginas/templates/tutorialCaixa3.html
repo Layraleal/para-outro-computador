@@ -1,0 +1,68 @@
+{% load static%}
+
+!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Recompor</title>
+	<link  rel = "stylesheet" href = "{% static 'css/tutorial.css' %}">
+	<script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header>
+        {% include 'navbar.html' %}
+    </header>
+<div id = "tutorialPag">
+    <p id = "sub" >COMO FAZER</p>
+
+    <div class="slides" style="margin-left: -19%;">
+    <div class="container" style="position: relative;">
+            <div class="slide">
+                <!--Passo a passo da caixa parte 3-->
+                <!--<a href="#passosCaixa2"><img class = setadiv src="imagens/setaunica_esquerda.png"></a>-->
+
+                <section>
+                    <a  class = "aaa" href ="{% url 'paginas:tutCaixa2' %}"><button id = "voltar"><img id = "seta-proximo" src=" {% static 'img/setaUnica_esquerda.png' %}" style="width: 80px; height: 60px; padding-left: 160px;"></button></a>
+                </section>
+        
+                <section class="qF7">
+                    <img class=num src="{% static 'img/n7.png' %}">
+                    <h1>Passo</h1>
+                    <h3>Coloque os matérias orgânicos diariamente, enquanto a caixa ao meio   permanece com os matérias em decomposição </h3>
+                </section>
+
+                <section class="qF8">
+                    <img class=num src="{% static 'img/n8.png' %}">
+                    <h1>Passo</h1>
+                    <h3>Com aproximadamente 30 dias, retire o húmus e repita o processo invertendo outra vez as duas caixas. </h3>
+                </section>
+                
+                <section class="qF9">
+                    <img class=num src="{% static 'img/n9.png' %}">
+                    <h1>Passo</h1>
+                    <h3>OBS: ao decidir o tamanho das caixas a ser utilizada, leve em consideração, o espaço onde será colocada e o volume de resíduos produzidos.</h3>
+                </section>
+                <!--<a href="#"><img class = setadiv ></a>-->
+            </div>
+    </div>    
+    </div>   
+
+    <div id="fim">  
+        <img id="dicatuto" src="{% static 'img/dica.png' %}" >
+        <section>
+            <p id= "text-dicatuto">O húmus é uma substância formada por matéria orgânica em decomposição, rica em nutriente e um adubo para suas plantas.</p>
+        </section>
+    </div>
+    
+    <div class="nova-compostagem">
+        <a  class = aaa href = "{% url 'composteira:addCompostagem' %}"><button id = "cadastrar-compostagem3">Cadastrar Compostagem<img id = seta-compostagem src="{% static 'img/seta-tutorial.png' %}"></button></a>
+    </div>
+</div> 
+    <script src="{% static 'js/navegacao.js' %}"></script>
+
+</body>
+</html>          

@@ -1,0 +1,81 @@
+{% load static%}
+
+!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Recompor</title>
+	<link  rel = "stylesheet" href = "{% static 'css/tutorial.css' %}">
+	<script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header>
+        {% include 'navbar.html' %}
+    </header>
+<div id = "tutorialPag">
+    <p id = "sub" >COMO FAZER</p>
+    
+    <div class="slides" >
+    <div class="container" style="position: relative;">
+        <div class="slide">
+            <!--Passo a passo da caixa parte 2-->
+                <!--<a href="#passosCaixa1"><img class = setadiv src="imagens/setaunica_esquerda.png"></a>-->
+
+                <section>
+                    <a  class = "aaa" href ="{% url 'paginas:tutCaixa' %}"><button id = "voltar"><img id = "seta-proximo" src=" {% static 'img/setaUnica_esquerda.png' %}" style="width: 80px; height: 60px; padding-left: 160px;"></button></a>
+                </section>
+
+                <section class="qF4">
+                    <img class=num src="{% static 'img/n4.png' %}">
+                    <h1>Passo</h1>
+                    <h3>Deixando as três caixas empilhadas, na primeira a cima, coloque uma camada de serragem ou folhas no fundo e depois um pouco de terra.</h3>
+                </section>
+                <section class="qF5">
+                    <img class=num src="{% static 'img/n5.png' %}">
+                    <h1>Passo</h1>
+                    <h3>Depois deposite o material orgânico na caixa, cubra com folhas ou serragem e tampe.  </h3>
+                </section>
+                <section class="qF6">
+                    <img class=num src="{% static 'img/n6.png' %}">
+                    <h1>Passo</h1>
+                    <h3>Com o passar do tempo e a primeira caixa estiver cheia, retire, coloque no meio, fazendo a segunda caixa ficar no topo e  colocando uma camada de terra nessa caixa</h3>
+                </section>
+                <div id="fim">
+                    <section>
+                        <a  class = "aaa" href ="{% url 'paginas:tutCaixa3' %}"><button id = "proximo"><img id = "seta-proximo" src=" {% static 'img/setaUnica_direita.png' %}" style="width: 80px; height: 60px; padding-left: 40px;"></button></a>
+                    </section>
+                </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="fim">  
+        <img id="dicatuto" src="{% static 'img/dica.png' %}" >
+        <section>
+            <p id= "text-dicatuto">Sempre deixe o topo da caixa tampado, após depositar mais matéria orgânica, para evitar que bichinhos entre na sua composteira, pois o cheiro pode atraí-los.</p>
+        </section>
+                
+    </div> 
+    
+    <div class="nova-compostagem">
+        <a  class = aaa href = "{% url 'composteira:addCompostagem' %}"><button id = "cadastrar-compostagem2">Cadastrar Compostagem<img id = seta-compostagem src="{% static 'img/seta-tutorial.png' %}"></button></a>
+    </div>
+</div> 
+
+    <script src="{% static 'js/navegacao.js' %}"></script>
+
+</body>
+</html>
+        
+    
+        
+        
+       
+        
+     
+      
+         

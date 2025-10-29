@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Confirmar Exclusão</title>
+    <link rel="stylesheet" href="{% static 'css/excluirComposteira.css' %}">
+    <script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>
+</head>
+<body id ="excluirComposteira">
+    <header>{% include "navbar.html" %}</header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id = "formulario-excluir">
+        <div id="pag-excluir-comp">
+            <h1 id= 'titulo-excluir'>Confirmar Exclusão</h1>
+            <div id = "excluir-comp">
+            <p class = "confirmar">Tem certeza de que deseja excluir a composteira "{{ composteira.nome }}"?</p>
+            <form method="post">
+                {% csrf_token %}
+                <button id= "butao-excluir" type="submit">Sim, excluir</button>
+                <a href="{% url 'composteira:graficoGeral' %}" id="butao-cancelar">Cancelar</a>
+            </div>
+            </form>
+        </div>
+    </div>    
+</body>
+</html>

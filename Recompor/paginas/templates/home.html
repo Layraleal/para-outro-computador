@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Recompor</title>
+	<link rel = "stylesheet" href = "{% static 'css/home.css' %}">
+	<script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>
+
+</head>
+<body id = "home" >
+    <header>
+        {% include 'navbar.html' %}
+    </header> 
+    <main>
+		<div id="content">
+        <h1 id="tema">Compostagem? O que é isso?</h1>
+        <h2 id="subtitulo">Você já parou para pensar aonde vai parar os seus resíduos orgânicos? Se eles causam algum mal ao meio ambiente?</h2>
+        <div class="textos">
+			<p class="conteudo1"><u>Compostagem</u> é o processo biológico de valorização da matéria orgânica, seja ela de origem urbana, <u>doméstica</u>, industrial, agrícola ou florestal, e pode ser considerada como um tipo de reciclagem do lixo orgânico. Trata-se de um processo natural em que os micro-organismos, como fungos e <u>bactérias</u>, são responsáveis pela degradação de certos tipos de resíduos, transformando-a em <u>húmus</u>, um material muito rico em nutrientes e fértil.</p>
+			<br>
+			<img id = "alimento" alt = "Alimentos" src = "{% static 'img/alimentos.png' %}">
+		</div>
+		<div class="textos">
+			<img id = "comp" alt = "CompMateria" src = "{% static 'img/CompMateria.png' %}">
+			<p class="conteudo2">A prática feita em casa ainda faz bem para a saúde. De acordo com um estudo, o contato com uma bactéria presente no húmus pode ser usado como antidepressivo e diminui alergias, dores e náuseas.
+			<br><br>A compostagem ajuda na redução das sobras de alimentos, tornando-se uma solução fácil para reciclar os resíduos gerados em nossa residência. 
+			</p>
+		</div>
+		</div>
+    </main>
+    <script src="{% static 'js/navegacao.js'%}"></script>
+</body>
+</html>

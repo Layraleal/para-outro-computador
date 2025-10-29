@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Recompor</title>
+    <link rel = "stylesheet" href = "{% static 'css/addCompostagem.css' %}">
+	<script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>
+</head>
+
+<body id = "addcompostagem">
+    <header>{% include "navbar.html" %}</header>
+
+    <form action="{% url 'composteira:addCompostagem' %}" method="post" id = 'form'>
+    {% csrf_token %}
+        <div id = "container_compostagem"> 
+            <div id = "container_composteira">
+                <p id="saudacao"> Olá {{ user.get_username }}!</p>
+                <img id = "folha-composteira" src ="{% static 'img/folha-composteira.png' %}">
+                <div id="composteira">
+                    <p id="comp-nome">Selecione a composteira: </p>
+                    <div id = 'composteiras'>
+                        {% for composteira in composteiras %}
+                        <section class ="img-name">
+                            <input type="radio" name="composteira" value = "{{ composteira.id_composteira }}">
+                            <img class ="foto-comp" src="{% static 'img/icon_colocaimg.png' %}">
+                            <p class = "nome-comp" >{{ composteira.nome }}</p>
+                        </section>
+                        {% endfor %} 
+                    </div>       
+                </div>
+            </div>
+
+            <div id = "formAdicao">
+                <div>
+                    <h1 id="titulo-comp">Nova Compostagem</h1>
+                </div>
+                <!-- <div>
+                    <p id="comp-nome">Sorvetinho</p>
+                </div> -->
+                <div id="inserir-data">
+                    <p>Data:</p>
+                    <input id="data_compost" type = "date" name="data_inicio">
+                </div>
+                <div id="inserir-peso">
+                    <label>Peso:</label>
+                    <input type="number" placeholder='Kg' name="peso">
+                </div>
+                <div id="estimativa">
+                    <p>Sua compostagem estará pronta em:</br></p>
+                </div>
+                <div>
+                    <button type = "submit" id="enviar_compos"> Salvar</button>
+                </div>
+                
+            </div>
+        </div> <!--Conteiner compostagem-->
+    </form>
+</body>

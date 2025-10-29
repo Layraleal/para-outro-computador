@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recompor</title>
+    <link rel="stylesheet" href="{% static 'css/addComposteira.css' %}">
+    <script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>
+</head>
+<body id="addcomposteira">
+    <header>{% include "navbar.html" %}</header>
+
+    <div id="formulario">
+        <div id="pag-new-comp">
+            <h1 id="titulo-nova">Nova Composteira</h1>
+
+            <form action="{% url 'composteira:addComposteira' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div id="alinha-divs">
+
+
+                    <div id="linha0">
+                        <!-- Imagem apenas para pré-visualização -->
+                        <div class="preview-container">
+                            <img id="imagemcomp" src="{% static 'img/composteiraSemFoto.png' %}" alt="Pré-visualização da imagem">
+                        </div>
+
+                        <!-- Input escondido -->
+                        <input type="file" accept="image/*" id="imgUpload" name="imagem" onchange="previewImagem(event)"> 
+
+                        <!-- Botão de seleção -->
+                        <button type="button" class="btn-selecionar" onclick="document.getElementById('imgUpload').click()">Selecionar imagem</button>
+                    </div>
+
+                    <div id="linha1">
+                        <p class="caracteristicas-comp">Composteira</p>
+                        <select id="sus" class="caracteristicas-comp-tipo" name="tipo" required>
+                            <option value="">Selecione</option>
+                            <option value="Terra">Terra</option>
+                            <option value="Caixa">Caixa</option>
+                        </select>
+                    </div>
+
+                    <div id="linha3">
+                        <p class="caracteristicas-comp">Região</p>
+                        <select id="sus" class="caracteristicas-comp-regiao" name="regiao" required>
+                            <option value="">Selecione</option>
+                            <option value="Norte">Norte</option>
+                            <option value="Nordeste">Nordeste</option>
+                            <option value="Sul">Sul</option>
+                            <option value="Sudeste">Sudeste</option>
+                            <option value="Centro-Oeste">Centro-Oeste</option>
+                        </select>
+                    </div>
+
+                    <!--div id="linha4"><p class="caracteristicas-comp">Tamanho</p>-->
+
+                    <div id="linha5">
+                        <p class="caracteristicas-comp">Data</p>
+                        <input id="data-composteira" type="date" class="caracteristicas-comp" name="data_const" required>
+                    </div>
+
+                    <div id="linha6">
+                        <p class="caracteristicas-comp">Nome</p>
+                        <input class="alt" type="text" id="name_comp" placeholder="Nomeie sua Composteira" name="name_comp" required/> 
+                    </div>
+                </div>
+
+                <div id="butao">
+                    <button id="button-minhaComp" type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="mensagem">
+            <h1>Ajudando a dar um novo rumo para a sua matéria orgânica.</h1>
+        </div>
+    </div>
+
+
+    <script>
+        function previewImagem(event) {
+            const input = event.target;
+            const preview = document.getElementById('imagemcomp');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>

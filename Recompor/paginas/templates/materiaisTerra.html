@@ -1,0 +1,109 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Recompor</title>
+    <link rel = "stylesheet" href = "{% static 'css/materiais.css' %}">
+    <script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body id = "rec">
+    <header>
+        {% include 'navbar.html' %} 
+        <li><a href="https://youtu.be/zKGywhHQocM?si=MwBKdT7Jnkl2Lbyo" target="_blank">Saiba mais</a></li>
+    </header>
+    <div id="materiaisPag">
+        
+        <h1 id = "minititle2" style="color: black; font-size: 33px; padding-top: 1px;">Materiais</h1> 
+        <div id = "organizatipo">
+
+            <div id = "tipo"> 
+                <p class = "ppp">Tipo</P>
+                <p class = "escolha">
+                <div class = 'space'> 
+                    <a class = 'aaa' href="{% url 'paginas:matCaixa'%}"><button class = "escolha-btn" ></button></a><p class = "lado">Caixa</p>
+                </div>
+
+                <div class = space> 
+                    <a class = 'aaa' href = "{% url 'paginas:matTerra' %}"><button class = "escolha-btn" style="background-color: #7F9838;" ></button></a><p class = "lado">Terra</p>
+                    
+                </div>
+
+                </p>
+            </div> <!--Tipo-->
+
+            <div id = "escala"> 
+                <P class = "ppp">Escala</P>
+                <p class = "escolha">
+                    <div class = 'space'> 
+                        <button class = "escolha-btn"></button><p class = "lado">Pequena</p>
+                    </div>
+                    <div class = 'space'> 
+                        <button class = "escolha-btn"></button><p class = "lado">Média</p>
+                    </div>
+                    <div class = 'space'> 
+                        <button class = "escolha-btn"></button><p class = "lado">Grande</p>
+                    </div>
+                </p>
+            </div> <!--Escala-->
+        </div> <!--OrganizaTipo-->
+
+    <div id="materiais-necessarios">
+            
+            <div class="material-pa" alt="material pa" >    
+                <img class = "imagensAjeitadas" src="{% static 'img/novPa.png' %}">
+                    <section >
+                        <p class="minititulo" >Pá pequena</p>
+                        <p class="texto" >Pá pequena de plástico ou metal.</p>
+                    </section>
+            </div>    
+            
+
+            <div class="material-pa" alt="material pa" >  
+                <img class = "imagensAjeitadas" src="{% static 'img/folha_canva.png' %}">
+                    <section>
+                        <p class="minititulo" style="margin: 0%;">Folhas secas</p>
+                        <p class="texto" style="margin-right: -20%;" >Folhas secas ou serragem, aproximadamente 500g.</p>
+                    </section>
+            </div><!--imagens alinhadas-->   
+
+            <br>
+            <div class="material-pa" alt="material pa" >  
+                <img class = "imagensAjeitadas" src="{% static 'img/terra_canva.png' %}">
+                    <section>
+                        <p class="minititulo">Terra</p>
+                        <p class="texto">Um pouco de terra preta, aproximadamente 200g.</p>
+                    </section>
+            </div><!--imagens alinhadas-->
+
+            <div class="material-pa" alt="material pa" >  
+                <img class = "imagensAjeitadas" src="{% static 'img/residuo.png' %}">
+                <section>
+                    <p class="minititulo" style="margin: 0%; margin-right: -100%;">Resíduos orgânicos</p>
+                    <p class="texto" style="margin-right: -5%;" >Pó de café, casca de alimentos e frutas.</p>
+                </section>
+            </div> <!--imagens alinhadas-->
+    </div> <!--materiais necessarios-->
+
+     <div id = "fim">  
+        
+        <section>
+            <img id="dica" src="{% static 'img/dica.png' %}">
+            <p id= "text-dica">Se não tiver a pá pode fazer uma usando a embalagem de amaciante ou água sanitária com alça.<a href = "https://youtu.be/zKGywhHQocM?si=MwBKdT7Jnkl2Lbyo" class="linkSaiba" target="_blank">Saiba mais.</a></p>
+        </section>
+    
+    </div> 
+
+    <div class="nova-compostagem">
+        <a  class = "aaa" href ="{% url 'paginas:tutCaixa' %}"><button id = "tudo-pronto">Tutorial<img id = "seta-tutorial" src=" {% static 'img/seta-tutorial.png' %}"></button></a>
+
+    </div>  
+
+    </div> <!--Materiaispag-->
+    
+    <script src="{% static 'js/navegacao.js' %}"></script>
+</body> 

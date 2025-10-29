@@ -1,0 +1,77 @@
+{% load static%}
+
+!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Recompor</title>
+	<link  rel = "stylesheet" href = "{% static 'css/tutorial.css' %}">
+	<script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header>
+        {% include 'navbar.html' %}
+    </header>
+<div id = "tutorialPag">
+    <p id = "sub" >COMO FAZER</p>
+    
+    <div class="slides" style="margin-left: 19%;">
+    <div class="container" style="position: relative;">
+           
+        <div class="slide">
+            <!--Passo a passo da caixa parte 1-->
+                <!--<a href="#"><img class = setadiv></a>-->
+   
+                <section class="qF1">
+                    <img src="{% static 'img/folhas_arq.png' %}" class="folha-tuto" alt="folha tuto" > 
+                    <img class=num src="{% static 'img/n1.png' %}">
+                    <h1>Passo</h1>
+                    <h3>Pegue as duas caixas e no fundo dos recipientes faça vários furos com a furadeira numa distância de 3 cm entre cada buraco feito. </h3>
+                    
+                    <!--<div class = "dica">
+                    <img id="dica" src = "{% static 'img/dica.png' %}">
+                    <p>Você também pode fazer composteira com baldes plásticos. <a href = "#">Saiba mais.</a></p>
+                    </div>-->
+                </section>
+                
+                <section class="qF2">
+                    <img class=num src="{% static 'img/n2.png' %}">
+                    <h1>Passo</h1>
+                    <h3>Após isso, faça alguns pequenos furos com a distância de 2 cm entre eles em todo o contorno das laterais para ventilação. </h3>
+                </section>
+                
+                <section class="qF3">
+                    <img class=num src="{% static 'img/n3.png' %}">
+                    <h1>Passo</h1>
+                    <h3>Em seguida coloque duas caixa sobre a outra, deixando a terceira que não recebeu furos embaixo.</h3>
+                </section>
+                <div id="fim">
+                    <section>
+                        <a  class = "aaa" href ="{% url 'paginas:tutCaixa2' %}"><button id = "proximo"><img id = "seta-proximo" src=" {% static 'img/setaUnica_direita.png' %}" style="width: 80px; height: 60px; padding-left: 40px;"></button></a>
+                    </section>
+                </div>
+        </div>
+    </div>
+    </div>        
+
+    <div id="fim">  
+        
+        <section>
+            <img id="dicatuto" src="{% static 'img/dica.png' %}" >
+            <p id= "text-dicatuto">Você também pode fazer composteiras com baldes plásticos.<br> <a href = "https://parquecientec.usp.br/passeio-virtual/circuito-da-compostagem/faca-sua-propria-composteira/composteira-com-baldes-plasticos" class="linkSaiba" target="_blank">Saiba mais.</a></p>
+        </section>
+                
+    </div>
+    <div class="nova-compostagem">
+        <a  class = aaa href = "{% url 'composteira:addCompostagem' %}"><button id = "cadastrar-compostagem">Cadastrar Compostagem<img id = seta-compostagem src="{% static 'img/seta-tutorial.png' %}"></button></a>
+    </div>
+</div>   
+
+    <script src="{% static 'js/navegacao.js' %}"></script>
+
+</body>
+</html>

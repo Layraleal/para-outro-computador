@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>Recompor</title>
+    <link rel="stylesheet" href="{% static 'css/conta.css' %}">
+    <script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>
+    <style>
+       
+    </style>
+</head>
+
+<body id="config-conta">
+    <header>
+	    {% include 'navbar.html' %}
+    </header>
+    
+    <div class="painel-central">
+        <div class="painel-conteudo" style="width:100%;">
+            <h1>Configurações</h1>
+            <!-- Informações do Perfil --> 
+            <div class="profile-info">
+                <form method="post" action="{% url 'usuarios:editar_perfil' %}">
+                    {% csrf_token %}
+                    <div class="imageContainer">
+                        <input type="hidden" name="foto" id="foto" value="{{ user.perfil.foto|default:'foto1.png' }}">
+                        <div style="margin-top: 10px;">
+                            <img id="preview" src="{% static 'img/' %}{{ user.perfil.foto|default:'icon_user.png' }}" alt="Pré-visualização" width="110" height="110">
+                        </div>
+                        <button class="botaoFoto" type="button" onclick="abrirModal()">Alterar foto</button>
+                    </div>
+                    <!-- Modal -->
+                    <div id="modalFotos">
+                        <div class="modal-content">
+                            <h3>Escolha uma foto</h3>
+                            <div style="display: flex; justify-content: center; margin-top: 15px;">
+                                <img src="{% static 'img/foto1.png' %}" alt="Foto 1" width="80" height="80" onclick="selecionarFoto('foto1.png')">
+                                <img src="{% static 'img/foto2.png' %}" alt="Foto 2" width="80" height="80" onclick="selecionarFoto('foto2.png')">
+                                <img src="{% static 'img/foto3.png' %}" alt="Foto 3" width="80" height="80" onclick="selecionarFoto('foto3.png')">
+                            </div>
+                            <button type="button" onclick="fecharModal()">Cancelar</button>
+                        </div>
+                    </div>
+                    <label for="novo_nome">Nome de usuário</label>
+                    <input type="text" name="novo_nome" class="dados_novos" value="{{ user.username }}" required>
+                    <label for="novo_email">E-mail</label>
+                    <input type="email" name="novo_email" id="novo_email" value="{{ user.email }}" required>
+                    <button class="button" type="submit"><i class="fas fa-save"></i> Salvar Alterações</button>
+                </form>
+            </div>
+
+            <!-- Alterar Senha -->
+            <div class="settings">
+                <h2>Alterar Senha</h2>
+                <form method="post" action="{% url 'usuarios:alterar_senha' %}">
+                    {% csrf_token %}
+                    <label for="current-password">Senha Atual</label>
+                    <input type="password" name="current_password" id="current-password" placeholder="Digite a senha atual" required>
+                    <label for="new-password">Nova Senha</label>
+                    <input type="password" name="new_password" id="new-password" placeholder="Digite a nova senha" required>
+                    <label for="confirm-password">Confirmar Nova Senha</label>
+                    <input type="password" name="confirm_password" id="confirm-password" placeholder="Confirme a nova senha" required>
+                    <a class="password" href="{% url 'password_reset' %}">Esqueceu a senha?</a>
+                    <button class="button" type="submit"><i class="fas fa-key"></i> Alterar Senha</button>
+                </form>
+            </div>
+
+            <!-- Excluir Conta -->
+            <div class="settings">
+                <form method="post" action="{% url 'usuarios:excluir_conta' %}" onsubmit="return confirm('Tem certeza que deseja excluir sua conta? Esta ação não poderá ser desfeita!');">
+                    {% csrf_token %}
+                    <button class="delete-btn" type="submit"><i class="fas fa-trash"></i> Excluir Conta</button>
+                </form>
+            </div>
+            <!-- Trocar de Conta -->
+            
+        </div>
+    </div>
+    <script>
+    const caminhoBase = "{% static 'img/' %}";
+
+    function abrirModal() {
+        document.getElementById('modalFotos').style.display = 'flex';
+        setTimeout(() => {
+            document.querySelector('#modalFotos .modal-content').focus();
+        }, 100);
+    }
+
+    function fecharModal() {
+        document.getElementById('modalFotos').style.display = 'none';
+    }
+
+    function selecionarFoto(nomeFoto) {
+        document.getElementById('foto').value = nomeFoto;
+        document.getElementById('preview').src = caminhoBase + nomeFoto;
+        fecharModal();
+    }
+
+    // Fechar modal ao pressionar ESC
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+            fecharModal();
+        }
+    });
+
+    // Preview de senha (olhinho)
+    document.querySelectorAll('input[type="password"]').forEach(function(input) {
+        const eye = document.createElement('span');
+        eye.innerHTML = '<i class="fas fa-eye"></i>';
+        eye.style.position = 'absolute';
+        eye.style.right = '18px';
+        eye.style.top = '50%';
+        eye.style.transform = 'translateY(-50%)';
+        eye.style.cursor = 'pointer';
+        eye.style.color = '#7ba51b';
+        eye.style.fontSize = '1.1rem';
+        eye.onmousedown = function() { input.type = 'text'; };
+        eye.onmouseup = function() { input.type = 'password'; };
+        eye.onmouseleave = function() { input.type = 'password'; };
+        const wrapper = document.createElement('div');
+        wrapper.style.position = 'relative';
+        input.parentNode.insertBefore(wrapper, input);
+        wrapper.appendChild(input);
+        wrapper.appendChild(eye);
+    });
+    </script>
+    <script src="{% static 'js/navegacao.js'%}"></script>
+    <!--integração do VLibras-->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <script src="{% static 'js/menu.js' %}"></script>
+</body>
+</html>

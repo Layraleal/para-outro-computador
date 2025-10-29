@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Recompor</title>
+	<link rel = "stylesheet" href = "{% static 'css/registro.css' %}">
+</head>
+<body>
+    <header>
+	    {% include 'navbar.html' %}
+    </header>
+    <div class="content">
+        <div class="container">
+        <h2>Notificações</h2>
+
+        <!-- Caixa de Pesquisa -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Pesquisar notificações...">
+            <button type="button" id="btnSearch">🔍</button>
+        </div>
+
+        <!-- Tabela -->
+        <div class="table-responsive">
+            <table id="notificacoesTable">
+            <thead>
+                <tr>
+                <th>#</th>
+                <th>Mensagem</th>
+                <th>Lida?</th>
+                <th>Data</th>
+                <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for notif in notifications %}
+                <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ notif.message|safe }}</td>
+                <td>{% if notif.seen %}✔{% else %}❌{% endif %}</td>
+                <td>{{ notif.created_at|date:"d/m/Y H:i" }}</td>
+                <td>
+                    <a href="{% url 'paginas:mark_as_unread' notif.id %}" class="btn btn-dark">
+                    <i>📩</i> Não lida
+                    </a>
+                    <a href="{% url 'paginas:delete_notification' notif.id %}" class="btn btn-danger delete-btn">
+                    <i>🗑</i> Remover
+                    </a>
+                </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="5" class="msg-empty">Nenhuma notificação encontrada.</td></tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+
+    <script>
+    // Pesquisa em tempo real
+    const searchInput = document.getElementById("searchInput");
+    const btnSearch = document.getElementById("btnSearch");
+    const tableRows = document.querySelectorAll("#notificacoesTable tbody tr");
+
+    function filtrarTabela() {
+        const filtro = searchInput.value.toLowerCase();
+        tableRows.forEach(row => {
+        const texto = row.innerText.toLowerCase();
+        row.style.display = texto.includes(filtro) ? "" : "none";
+        });
+    }
+
+    searchInput.addEventListener("keyup", filtrarTabela);
+    btnSearch.addEventListener("click", filtrarTabela);
+
+    // Confirmar exclusão
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+        if (!confirm("Tem certeza que deseja remover esta notificação?")) {
+            e.preventDefault();
+        }
+        });
+    });
+    </script>
+</body>
+</html>

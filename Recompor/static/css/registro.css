@@ -1,0 +1,142 @@
+body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      color: #2c3e50;
+    }
+    .content{
+	max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    top: 124px;
+}
+
+    .container {
+      max-width: 1200px;
+      margin: 32px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+      padding: 32px;
+      
+    }
+
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: #34495e;
+    }
+
+    /* === Barra de pesquisa === */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      background: #f8f9fa;
+      padding: 10px 14px;
+      border-radius: 8px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid #dcdfe6;
+      border-radius: 6px;
+      font-size: 0.95em;
+    }
+
+    .search-bar button {
+      background: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .search-bar button:hover {
+      background: #2980b9;
+    }
+
+    /* === Tabela === */
+    .table-responsive {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    thead th {
+      background: #ecf0f1;
+      font-weight: 600;
+      padding: 12px;
+      text-align: left;
+      font-size: 0.95em;
+      color: #2c3e50;
+    }
+    tbody td {
+      padding: 12px;
+      border-top: 1px solid #eee;
+    }
+    tr:hover {
+      background: #f9fcff;
+    }
+
+    /* === Botões === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 130px;            /* mesmo tamanho */
+  padding: 8px 0;          /* centraliza o texto */
+  border: none;
+  border-radius: 20px;
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: 0.2s;
+  margin: 5px;      /* espaço entre eles */
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+}
+
+.btn-dark {
+  background: #34495e;
+  color: #fff;
+}
+.btn-dark:hover {
+  background: #2c3e50;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.btn-danger {
+  background: #e74c3c;
+  color: #fff;
+}
+.btn-danger:hover {
+  background: #c0392b;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Ícones */
+.btn i {
+  font-style: normal;
+  font-size: 1em;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .btn {
+    width: 100px;   /* reduz no mobile */
+    font-size: 0.75em;
+    padding: 6px 0;
+  }
+}

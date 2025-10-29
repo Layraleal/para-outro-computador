@@ -1,0 +1,322 @@
+/*------ FONTES ------*/
+@font-face{
+	font-family: "Pro";
+	src: url("Arista-Pro-Alternate-Bold-trial.ttf") format("truetype");/*Não é a mesma fonte - consultar direitos autorais*/
+}
+	
+@font-face{
+	font-family: "Nunito";
+	src: url("Nunito-SemiBold.ttf") format("truetype");
+}
+
+@font-face{
+	font-family: "NunitoB";
+	src: url("Nunito-Bold.ttf") format("truetype");
+}
+/* Colocar foto da composteira */
+/*#imgComp {
+    width: 60px;
+    height: 60px;
+    padding:0px;
+    background-color: #eee;
+    border: 2px solid #A9C435;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-content: center;
+}*/
+#imagemcomp{
+    width: 100px;
+    height: 100px;
+    padding:0px;
+    background-color: #eee;
+    border: 2px solid #A9C435;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+#imagemcomp:hover{
+     background-color: #eee;
+    border: 2px solid #918F8F;
+}
+
+#txtEsclhfoto{
+    display: flex;
+    padding-left: 80px;
+    padding-bottom: 80rem;
+    font-family: NunitoB; 
+    font-size: 1.2rem;
+    color: #329813; 
+    text-align: left; 
+}
+
+#textaddcomp{
+    color: #41671D;
+    font-size: 14px;
+    
+   
+}
+
+#imgUpload {
+    display: none; /* Oculta a imagem feia */
+  }
+
+.custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.custom-file-upload img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+/*#imgComp:hover{
+    background-color: #eee;
+    border: 2px solid #918F8F;
+}*/
+
+
+/*Configuração da Scrollbar*/
+::-webkit-scrollbar{
+    margin-right: 20px;
+    border-radius: 10px;
+    width: 10px;
+    background-color: #f4f4f4;
+    height: 80%;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #7F9838;
+    border-radius:10px ;
+    width: 8px;
+}
+/*Fim*/
+
+/*Configuração do Body*/
+#addcomposteira{
+    border: none;
+    margin: .1px;
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 1.6rem;
+    /* Configurção do gif*/
+    background-image: url(/static/img/fundo-paisagem.gif);
+    background-position: bottom;
+    background-attachment: fixed;
+    background-repeat: repeat-x;
+}
+
+/*Configuração do formulário*/
+#formulario{
+    width: 100%;
+    display: flex;
+    margin-top: 8%;
+}
+
+#pag-new-comp{
+    border: 3px solid;
+    border-radius: 30px;
+    background-color: #F4F4F4;
+    opacity: 95%;
+    width: 50%;
+    height: 98%;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    position: relative;
+    top:10%;
+    margin-left: 10%;
+    transition-duration: 1s;
+}
+
+#titulo-nova{
+    font-family: NunitoB;
+    font-size: 1.6em;
+    text-align: center;
+    height: 3px;
+}
+
+#alinha-divs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Nunito;
+    font-size: 1.2em;
+}
+/* Container geral */
+#linha0 {
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Esconde o input de arquivo */
+#imgUpload {
+    display: none;
+}
+
+/* Contêiner da imagem */
+.preview-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Imagem de pré-visualização (não clicável) */
+.preview-container img {
+    display: block;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    pointer-events: none; /* impede clique */
+}
+
+
+/* Efeito hover */
+.btn-selecionar:hover {
+    background-color: #41671D;
+    border: 1px solid #41671D;
+    transform: scale(1.05);
+}
+
+#linha1, #linha2, #linha3, #linha4, #linha5, #linha6{
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 62px;
+}
+
+.caracteristicas-comp{
+    margin: 15px 30px;
+    min-width: fit-content;
+}
+
+#suspensa{
+    font-family: Nunito;
+}
+select{
+    width: 30%;
+    height: 50%;
+}
+
+#sus{
+    max-width: 30%;
+    min-width: fit-content;
+    height: 30px;
+    font-size: .85em;
+    padding: 5px;
+    border-radius: 50px;
+    border: solid 2px #41671D;
+    text-align: left;
+}
+
+#name_comp{
+    width: 40%;
+    margin: 20px;
+    font-size: .9em;
+    border: 0px;
+    border-bottom: solid 2px #41671D;
+    background-color: transparent;
+}
+
+#data-composteira{
+    width: 40%;
+    height: 50%;
+    font-size: .9em;
+    font-family: Nunito;
+    background-color: transparent;
+    border: 0px;
+    border-bottom: solid 2px #41671D;
+}
+
+#button-minhaComp{
+    background-color: #7F9838;
+    width: 100px;
+    padding: 5px;
+    font-family: Nunito;
+    font-size: 0.9em;
+    border-radius: 20px;
+    border: 0px;
+}
+
+#button-minhaComp:hover{
+    color: #ffffff;
+
+}
+
+#butao{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#mensagem{
+    font-family: NunitoB;
+    color: #41671D;
+    font-size: 1.6rem;
+    margin: auto;
+    width: 30%;
+}
+/*Fim*/
+
+/*Retirar decoração de links*/
+a{
+    text-decoration: none;
+}
+
+/*Configurações de respansibilidae*/
+@media (max-width:1287px){
+    #formulario{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    #mensagem{
+        text-align: center;
+        width: 60%;
+        position: relative;
+        top:85px;
+        margin-bottom: 10px;
+        font-size: 15px;
+    }
+    #pag-new-comp{
+        margin-left: 0px;
+        width: 70%;
+    }
+}
+
+@media(max-width:520px){
+    #mensagem{
+        display: none;
+    }
+    #linha1, #linha2, #linha3, #linha4, #linha5, #linha6{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    .caracteristicas-comp {
+        margin: 0px 30px;
+        min-width: fit-content;
+    }
+    #name_comp {
+        margin: 0px;
+    }
+    #pag-new-comp{
+        width: 80%;
+    }
+    #butao{
+        margin-bottom: 5%;
+        margin-top: 5%;
+    }
+}

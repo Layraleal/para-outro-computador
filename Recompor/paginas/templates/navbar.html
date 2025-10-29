@@ -1,0 +1,227 @@
+{% load static %}  <!-- Tag obrigatória do Django para carregar arquivos estáticos -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content = "initial-scale=1, maximum-scale=1">
+	<title>Recompor</title>
+	<link rel = "stylesheet" href = "{% static 'css/navbar.css' %}">
+	<script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script> <!-- Link para utilizar alguns icons -->
+	<style>
+		.button-bar i.rotatable {
+			transition: transform 0.3s ease;
+		  }
+		
+		.rotated {
+			transform: rotate(-90deg); /* seta para cima */
+		}			     
+    </style>
+</head>
+<body id="bodynavbar" >
+		<div class = "navbar">
+			<div class="config-icon">
+						
+				<!-- Checkbox invisível para controlar o estado de aberto/fechado -->
+				<input type="checkbox" id="config-toggle" class="config-toggle">
+				<label for="config-toggle" id="config-icon"><i class="fa fa-bars"></i></label>
+			</div>					
+				<!-- Barra de configurações -->
+				 
+				<div class="config-bar">
+					<img src="{% static 'img/logo.png'%}" id="img-logo-config">
+
+					<h3><label for="config-toggle" class="close-btn" onclick="fecharBarra()" >X</label></h3>
+					<br><br><br>
+					<!--fazer uma opções com configurações gerais como: idioma, modo escuro o claro, notificações do sistema
+					(fazet umas que nem o duolingo, tamanho da fonte pra nego cego), suporte-->
+					
+
+					<a class="button-bar full-button"  href= "{% url 'paginas:home' %}">
+						<i class="fas fa-home"></i> Inicio
+					</a>
+
+					<a class="button-bar full-button" href="{% url 'usuarios:conta' %}">
+						<i class="fa-solid fa-circle-user"></i> Conta
+					</a>
+
+					<a class="button-bar full-button" href="#">
+						<i class="fa-solid fa-gear"></i> Configurações
+					</a>
+
+	
+					<!-- Botão de Tutoriais -->
+
+					<a class="button-bar full-button" onclick="toggleSubmenu('submenu1', this)">
+						<i class="fa-solid fa-person-digging"></i>
+						Tutorial
+						<i class="fa-solid fa-chevron-right fa-rotate-90 rotatable" style="font-size: 10px; margin-left: 5px;"></i>
+					</a>
+					<!-- Submenu -->
+					<div class="submenu" id="submenu1">
+						<a class="full-button submenu-link" href="{% url 'paginas:tutCaixa' %}">
+							 Caixas
+						</a>
+						<a class="full-button submenu-link" href="{% url 'paginas:tutTerra' %}">
+							Terra
+						</a>
+					</div>
+
+
+
+					<!-- Botão de Materiais -->
+
+					<a class="button-bar full-button" onclick="toggleSubmenu('submenu2', this)">
+						<i class="fa-solid fa-boxes-packing"></i>
+						Materiais
+						<i class="fa-solid fa-chevron-right fa-rotate-90 rotatable" style="font-size: 10px; margin-left: 5px;"></i>
+					</a>
+					<!-- Submenu -->
+					<div class="submenu" id="submenu2" style="display: none;">
+						<a class="full-button submenu-link" href="{% url 'paginas:matCaixa' %}">Para caixas</a>
+						<a class="full-button submenu-link" href="{% url 'paginas:matTerra' %}">Para Terra</a>
+					</div>
+
+
+
+
+					<!-- Botão de Composteiras -->
+
+					<a class="button-bar full-button" onclick="toggleSubmenu('submenuComposteiras', this)">
+						<i class="fa-solid fa-recycle"></i> 
+						Composteiras 
+						<i class="fa-solid fa-chevron-right fa-rotate-90 rotatable" style="font-size: 10px; margin-left: 5px;"></i>
+					</a>
+					<!-- Submenu -->
+					<div class="submenu" id="submenuComposteiras" style="display: none;">
+						<a class="full-button submenu-link" href="{% url 'composteira:addComposteira' %}" > Adicionar Composteira</a>
+						<a class="full-button submenu-link" href="{% url 'composteira:graficoGeral' %}"> Visualizar Composteiras</a>
+						<a class="full-button submenu-link" href="{% url 'composteira:addCompostagem' %}" id="add"> Adicionar Compostagem</a>
+						<a class="full-button submenu-link" href="{% url 'composteira:graficoIndividual' %}"> Visualizar Compostagens</a>
+					</div>
+					<script>
+						function toggleComposteiraSubmenu(id, button) {
+						const submenu = document.getElementById(id);
+						const icon = button.querySelector('i.rotatable'); // ícone rotativo (chevron)
+
+						// Alternar visibilidade do submenu
+						const isVisible = submenu.style.display === "block";
+						submenu.style.display = isVisible ? "none" : "block";
+
+						// Rotacionar o ícone
+						if (icon) {
+							icon.classList.toggle("rotated", !isVisible);
+						}
+					}
+					</script>
+
+					<a class="button-bar full-button notification-link" href="{% url 'paginas:notifications' %}">
+						<i class="fa-solid fa-bell"></i> Notificações
+						{% if notif_count > 0 %}
+							<span class="notification-badge">{{ notif_count }}</span>
+						{% endif %}
+					</a>
+
+
+					<a class="button-bar full-button"  href= {% url 'paginas:sobrenos' %}>
+						<i class="fa-solid fa-users"></i> Sobre nós
+					</a>
+
+					<a class="sair-button" href="{% url 'usuarios:deslogar' %}">
+						<i class="fa-solid fa-right-from-bracket"></i> Sair
+					</a>
+
+
+				</div>
+				<div id = "conteudo-esquerda-hearder">
+					<div id = "conteudo-esquerda-hearder">
+						<h1 id = "titulo-header"> Recompor</h1>
+						<img src = "{% static 'img/logo.png'%}" id ="img-logo-header" >
+						<ol id ="midia">
+							<a href="https://www.instagram.com/biogirls22/" target="_blank" ><il class="item-midia"><i class="fa-brands fa-instagram"></i></il></a>
+							<a href="https://www.facebook.com/profile.php?id=100083269934202" target="_blank" ><il class="item-midia"><i class="fa-brands fa-facebook-f"></i></il></a>
+							<a href="#"><il class="item-midia"><i class="fa-brands fa-twitter"></i></il></a>
+						</ol>
+					
+					</div>
+				</div>
+       		<!-- Condição para a mudança da barra de navegação do usuário logado-->
+				{% if user.is_authenticated %}
+				<div id = "conteudo-direita-hearder_login">
+					<img id="img_usuario" src="{% static 'img/' %}{{ user.perfil.foto|default:'icon_user.png' }}">
+					<h1 id= "nome_usuario">{{ user.get_username}}</h1>
+					
+				</div>
+
+					<!-- Condição Padrão para usuário não logado-->
+						{% else %} 
+						<div id = "conteudo-direita-hearder">
+							<a href = "{% url 'usuarios:logar' %}" class = "links" id = "btlogin">Entrar</a>
+							<a href = "{% url 'usuarios:entrar' %}" class = "links" id = "btcadastro">Cadastre-se</a>
+							<ol id ="midia2">
+								<a href="#"><il class="item-midia"><i class="fa-brands fa-instagram"></i></il></a>
+								<a href="#"><il class="item-midia"><i class="fa-brands fa-facebook-f"></i></il></a>
+								<a href="#"><il class="item-midia"><i class="fa-brands fa-twitter"></i></il></a>
+							</ol>
+						</div>
+						{% endif %}
+
+			<!-- Animação para a barra lateral( Para telas menores 
+				<div class="menu-toggle"> 
+					<div class="one"></div>
+					<div class="two"></div>
+					<div class="three"></div> 
+				</div>
+			-->
+
+			<!-- Barra horizontal de links -->
+				<!-- Barra horizontal de links -->
+				<nav id="navegacao">
+					<div id = "div-nav">
+						<ul class="menu">
+							<il class="namemenu"><a href = "#" class = "links" id = "tutorial">Tutorial <i class="fa-solid fa-chevron-right fa-rotate-90" style="font-size: 14px;"></i></i></a>
+								<ul class="submenu-1">
+									<li><a href="{% url 'paginas:tutCaixa' %}"> Caixas</a></li>
+									<li><a href="{% url 'paginas:tutTerra' %}"> Terra</a></li>
+								</ul>
+							</il>
+							<il class="namemenu"><a href = "#" class = "links" id = "materiais">Materiais <i class="fa-solid fa-chevron-right fa-rotate-90" style="font-size: 14px;"></i></a>
+								<ul class="submenu-1">
+									<li><a href="{% url 'paginas:matCaixa' %}"> Para Caixas</a></li>
+									<li><a href="{% url 'paginas:matTerra' %}"> Para Terra</a></li>
+								</ul>
+							</il>
+							<il class="namemenu"><a href = "{% url 'composteira:Emissao' %}" class = "links" id = "minhaComp">Minha Composteira <i class="fa-solid fa-chevron-right fa-rotate-90" style="font-size: 14px;"></i></a>
+								<ul class="submenu-1">
+									<li><a href="{% url 'composteira:addComposteira' %}" > Adicionar Composteira</a></li>
+									<li><a href="{% url 'composteira:graficoGeral' %}"> Visualizar Composteiras</a></li>
+									<li><a href="{% url 'composteira:addCompostagem' %}" id="add"> Adicionar Compostagem</a></li>
+									<li><a href="{% url 'composteira:graficoIndividual' %}"> Visualizar Compostagens</a></li>
+
+									</li>
+									
+								</ul>
+							</il>
+							<il><a href = "{% url 'paginas:sobrenos' %}" class = "links" id = "sobreNos">Sobre nós</a></il>
+						</ul>
+					</div>					
+				</nav>
+		</div>	
+		
+
+	<script src="{% static 'js/navegacao.js'%}"></script> <!-- Link de JS para animação da barra de navegação em telas pequenas-->
+	
+    <!--integração do VLibras-->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+	<script src="{% static 'js/menu.js' %}"></script>
+	
+</body>
+</html>

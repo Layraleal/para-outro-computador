@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recompor</title>
+    <link rel = "stylesheet" href = "{% static 'css/notificacoes.css' %}">
+    <style>
+
+    </style>
+</head>
+<body id="home">
+    <header>
+        {% include 'navbar.html' %}
+    </header>
+
+    {% block content %}
+    <div class="content">
+        <div class="container mt-4">
+
+            <h2>Todas as notificações</h2>
+
+            {% if notifications %}
+                <ul class="list-group mt-3">
+                    {% for notif in notifications %}
+                        {% if "Bem-vindo(a) ao Recompor" in notif.message %}
+                            <li class="list-group-item notificacao-boas-vindas">
+                                <div>
+                                    {{ notif.message|safe }}<br>
+                                    <small class="text-muted">{{ notif.created_at|date:"d/m/Y H:i" }}</small>
+                                </div>
+                                <div class="btn-group mt-2">
+                                    {% if not notif.seen %}
+                                        <a href="{% url 'paginas:mark_as_read' notif.id %}" class="btn btn-success btn-sm">
+                                            Marcar como lida
+                                        </a>
+                                    {% endif %}
+                                    <a href="{% url 'paginas:delete_notification' notif.id %}" class="btn btn-danger btn-sm">
+                                        Remover
+                                    </a>
+                                </div>
+                            </li>
+                        {% else %}
+                            <li class="list-group-item {% if not notif.seen %}fw-bold{% endif %}">
+                                <div>
+                                    {{ notif.message|safe }}<br>
+                                    <small class="text-muted">{{ notif.created_at|date:"d/m/Y H:i" }}</small>
+                                </div>
+                                <div class="btn-group mt-2">
+                                    {% if not notif.seen %}
+                                        <a href="{% url 'paginas:mark_as_read' notif.id %}" class="btn btn-success btn-sm">
+                                            Marcar como lida
+                                        </a>
+                                    {% endif %}
+                                    <a href="{% url 'paginas:delete_notification' notif.id %}" class="btn btn-danger btn-sm">
+                                        Remover
+                                    </a>
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="alert alert-warning mt-3">
+                    Todas as notificações foram lidas.
+                </div>
+            {% endif %}
+
+            <div class="mt-4">
+                <a href="{% url 'paginas:registro_notificacoes' %}" class="btn btn-secondary btn-sm">Todas as notificações</a>
+               
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

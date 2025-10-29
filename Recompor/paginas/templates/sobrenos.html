@@ -1,0 +1,99 @@
+{% load static %} <!-- Tag obrigatória do Django para carregar arquivos estáticos -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Recompor</title>
+	<link type="text/css" rel = "stylesheet" href = "{% static 'css/sobrenos.css' %}">
+    <script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>  <!-- Link para utilizar alguns icons -->
+
+</head>
+<header>
+	{% include 'navbar.html' %}
+</header>
+
+
+<body>
+	<h1 id = "sobrenos">Sobre Nós  <img src="{% static 'img/logo_comp.png'%}"></h1>
+    <div id = "nos">
+			<section id = "bio">
+				<img class = "fotos" src="{% static 'img/Biogirls - logo_pronta (1).jpg' %}">
+				<div class="info">
+					<h3 class="nome">BioGirls</h3>
+					<p>
+						Somos um projeto que busca um meio ambiente mais sustentável e a redução de descartes de resíduos orgânicos.
+						Queremos alcançar esse objetivo por meio de um sistema web que ensine a população a prática de compostagem 
+						doméstica, com tutoriais de como fazer, além de um grafico que mostra a redução de gases de efeito estufa a cada compostagem feita.
+					</p>
+				</div>
+			</section>
+			<section id = "bio1">
+				<img class = "fotos" src="{% static 'img/Ana.png'%}">
+				<div class="info">
+					<h3 class="nome">Ana Beatriz Santos Monteiro</h3>
+					<p>
+						Programadora Back-end<br>
+						<br>
+						Ana Beatriz é aluna do curso técnico em Informática no Instituto Federal de Ciência e Tecnologia de Rondônia - Campus Calama e integra a 
+						equipe como programadora, sua especialidade é o desenvolvimento Back-end do sistema. Além
+						disso Ana também pretende ser uma futura profissional da área de desenvolvimento.
+					</p>
+				</div>
+			</section>
+			<section id = "bio2">
+				<img class = "fotos" src="{% static 'img/Isa.png'%}">
+				<div class="info">
+					<h3 class="nome">Isabella Tereza Ferreira Viana</h3>
+					<p>
+						Programadora Back-end<br><br>
+						Isabella Tereza está no ultimo ano do ensino médio e logo se formará como Técnica em Informática
+						no Instituto Federal de Ciência e Tecnologia de Rondônia. Isabella é a especialista no Banco de Dados do sistema
+						e está na equipe desde o início da ideia. Isabella pretende ser uma futura médica e pretende cursar medicina 
+						na faculdade Federal do Estado de Rondônia.
+				</div>
+			</section>
+
+            <section id = "bio5">
+				<img class = "fotos" src="{% static 'img/Dani.png' %}">
+				<div class="info">
+					<h3 class="nome">Daniela Tissuya Silva Toda</h3>
+					<p>
+						Professora Orientadora<br>
+						<br>
+						Daniela é professora da Instituto Federal de Rondônia e uma grande ativista da causa da proteção e preservação do meio ambiente.
+						Ela foi responsável pela idealização do projeto inteiro e pela seleção das alunas que trabalham nele, ela percebeu a necessidade 
+						de ensinar a compostagem, pois viu a realidade dos moradores da vila princesa que precisam conviver diariamente com os malefícios da
+						decomposição incorreta dos resíduos, além dos gases que são emitidos ao meio ambiente.
+					</p>
+				</div>
+			</section>
+
+			<section id = "bio3">
+				<img class = "fotos" src="{% static 'img/Let.png' %}">
+				<div class="info">
+					<h3 class="nome">Leticia Vitória Firmino</h3>
+					<p>
+						Designer e front-end<br><br>
+						Leticia está no ultimo ano do seu ensino médio e Técnico em Informática. A sua especialidade no projeto foi na segunda versão do front-end 
+						do sistema e em sua identidade visual. Letícia faz parte da equipe BioGirls desde seu início mas não pretende seguir a carreira de desenvolvedora, 
+						quer cursar direito e seguir na área criminal.
+					</p>
+				</div>
+			</section>
+			<section id = "bio4">
+				<img class = "fotos" src="{% static 'img/Milka.png' %}">
+				<div class="info">
+					<h3 class="nome">Milka Patrícia Gonzales da Silva</h3>
+					<p>
+						Designer e front-end<br><br>
+						Milka está se formando no curso Técnico em Informática que ela cursa no Instituto Federal de Ciência e Tecnologia de Rondônia. 
+						Milka teve como especialidade o front-end da primeira versão do sistema além da funcionalidade de login da versão atual. Milka pretende
+						ser uma Designer de animação e logo fará uma especialização.
+					</p>
+				</div>
+			</section>
+		</div>
+
+		<script src="{% static 'js/navegacao.js' %}"></script>
+</body>

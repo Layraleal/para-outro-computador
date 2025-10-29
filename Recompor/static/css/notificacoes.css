@@ -1,0 +1,234 @@
+body { 
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.content {
+    max-width: 980px;
+    margin: 0 auto;
+    position: relative;
+    top: 124px;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Título */
+h2 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    border-left: 5px solid #3498db;
+    padding-left: 10px;
+}
+
+/* Lista de notificações */
+.list-group {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-group-item {
+    background: #fff;
+    border: 1px solid #e1e5eb;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    transition: background 0.2s ease-in-out, transform 0.2s;
+    display: flex;
+    flex-direction: column; /* empilha conteúdo e botões */
+    align-items: flex-start;
+}
+
+.list-group-item:hover {
+    background: #f9fbff;
+    transform: scale(1.01);
+}
+
+/* Espaço entre texto e botões */
+.list-group-item div:last-child {
+    margin-top: 8px;
+}
+
+/* Container dos botões */
+.btn-group {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* Notificação não lida */
+.fw-bold {
+    font-weight: bold;
+    background: #eef6ff !important;
+    border-left: 5px solid #3498db;
+}
+
+/* Texto pequeno */
+.text-muted {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+/* Botão sucesso */
+.btn-success {
+    background: #27ae60;
+    color: #fff;
+}
+.btn-success:hover {
+    background: #219150;
+}
+
+/* Botão perigo */
+.btn-danger {
+    background: #e74c3c;
+    color: #fff;
+}
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+/* Botão secundário */
+.btn-secondary {
+    background: #95a5a6;
+    color: #fff;
+}
+.btn-secondary:hover {
+    background: rgb(52, 52, 52);
+}
+
+/* Botão contorno */
+.btn-outline-danger {
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
+    background: transparent;
+}
+.btn-outline-danger:hover {
+    background: rgb(189, 46, 30);
+    color: #fff;
+}
+
+/* Alertas */
+.alert {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.alert-warning {
+    background: #fff8e5;
+    border: 1px solid #ffdd99;
+    color: #a37500;
+}
+
+/* Notificação de boas-vindas */
+.notificacao-boas-vindas {
+    background: #e0ffe0 !important;
+    color: #000000ff !important;
+    font-size: 1.18em;
+    font-weight: normal;
+    border-left: 6px solid #4CAF50;
+    box-shadow: 0 2px 8px rgba(76,175,80,0.08);
+    line-height: 1.6;
+    padding: 16px 12px;
+}
+
+.titulo-boas-vindas {
+    font-size: 1.7em;
+    font-weight: bold;
+    color: #228B22;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.notificacao-login {
+    font-size: 1.3em;
+    color: #1565c0;
+    font-weight: bold;
+}
+
+/* ========================== */
+/* 🔹 Responsividade Celular */
+/* ========================== */
+@media (max-width: 768px) {
+    .content {
+        top: 80px;
+        padding: 0 15px;
+    }
+
+    .container {
+        padding: 15px;
+        margin: 15px auto;
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+        text-align: center;
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .list-group-item {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+    }
+
+    .btn-group {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 6px;
+    }
+
+    .btn {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+
+    .alert {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .titulo-boas-vindas {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+    }
+
+    .notificacao-boas-vindas {
+        font-size: 1em;
+        padding: 12px;
+    }
+}
