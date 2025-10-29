@@ -46,7 +46,7 @@ body#config-conta form {
 
 body#config-conta label {
     font-weight: 800;
-    margin-top: 10px;
+    
 }
 
 body#config-conta input[type="text"],
@@ -55,7 +55,6 @@ body#config-conta input[type="password"] {
     padding: 10px 15px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    font-size: 1rem;
     transition: 0.2s ease-in-out;
     width: 100%;
     box-sizing: border-box;
@@ -110,11 +109,15 @@ body#config-conta .settings h2 {
     padding-bottom: 5px;
 }
 
+body#config-conta .settings button {
+    margin-bottom: 2px;
+}
+
 /* ======= LINKS ======= */
 body#config-conta .password {
     color: #7ba51b;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     margin-top: 5px;
 }
 
@@ -138,57 +141,116 @@ body#config-conta .imageContainer img {
 }
 
 /* ======= MODAL DE FOTO ======= */
-body#config-conta #modalFotos {
+
+input[type='file'] {
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
+}
+
+.max-width {
+    max-width: 500px;
     width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    position: relative;
+    right: 10px;  
+    z-index: -1; 
 }
-
-body#config-conta .modal-content {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    text-align: center;
-    animation: fadeIn 0.3s ease;
-}
-
-body#config-conta .modal-content h3 {
-    color: #44661b;
-    margin-bottom: 15px;
-}
-
-body#config-conta .modal-content img {
+ 
+#imgPhoto {
+    margin-top: 15%;
+    width: 60px;
+    height: 60px;
+    padding:0px;
+    background-color: #eee;
+    border: 2px solid #A9C435;
     border-radius: 50%;
-    border: 2px solid transparent;
-    margin: 0 8px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background .3s;
 }
 
-body#config-conta .modal-content img:hover {
-    border-color: #7ba51b;
+ /* Estilo para as setas */
+
+#modalFotos{
+    display:none; 
+    position: fixed;
+    top:0; 
+    left:0; 
+    width:100%; 
+    height:100%; 
+    background: rgba(0,0,0,0.6); 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 1000;
+
+}
+
+#modalFotos button {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+#modalFotos button:hover {
+    background-color: #99B83C;
+    color: white;
+}
+
+#janelaFotos{
+    background: white; 
+    padding: 20px; 
+    border-radius: 8px; 
+    max-width: 600px; 
+    width: 90%; 
+    text-align: center; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+    position: relative;
+
+}
+
+/* Estilo para o carrossel */
+  
+
+#carousel img:hover {
     transform: scale(1.1);
+    transition: transform 0.3s ease;
+    border: 2px solid #99B83C;
 }
 
-body#config-conta .modal-content button {
-    background-color: #ccc;
-    border: none;
-    margin-top: 20px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
+#imgPhoto:hover{
+    background-color: #eee;
+    border: 2px solid #918F8F;
 }
 
-body#config-conta .modal-content button:hover {
-    background-color: #bbb;
+.fotoperfilUsuario{
+    border-radius: 50%; 
+    cursor: pointer; 
+    margin: 10px 10px 10px 10px;
+    width: 80px;
+    height: 80px;
+
+}
+
+.first-content {
+    display: flex;
+}
+.first-content .second-column {
+    z-index: 11;
+}
+.first-column {
+    text-align: center;
+    width: 40%;
+    z-index: 10;
+}
+.second-column {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* ======= ANIMAÇÕES ======= */

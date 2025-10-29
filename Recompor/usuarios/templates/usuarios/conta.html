@@ -7,9 +7,7 @@
     <title>Recompor</title>
     <link rel="stylesheet" href="{% static 'css/conta.css' %}">
     <script src="https://kit.fontawesome.com/538f3725d2.js" crossorigin="anonymous"></script>
-    <style>
-       
-    </style>
+
 </head>
 
 <body id="config-conta">
@@ -20,7 +18,6 @@
     <div class="painel-central">
         <div class="painel-conteudo" style="width:100%;">
             <h1>Configurações</h1>
-            <h1>teste do github</h1>
             <!-- Informações do Perfil --> 
             <div class="profile-info">
                 <form method="post" action="{% url 'usuarios:editar_perfil' %}">
@@ -34,16 +31,35 @@
                     </div>
                     <!-- Modal -->
                     <div id="modalFotos">
-                        <div class="modal-content">
-                            <h3>Escolha uma foto</h3>
-                            <div style="display: flex; justify-content: center; margin-top: 15px;">
-                                <img src="{% static 'img/foto1.png' %}" alt="Foto 1" width="80" height="80" onclick="selecionarFoto('foto1.png')">
-                                <img src="{% static 'img/foto2.png' %}" alt="Foto 2" width="80" height="80" onclick="selecionarFoto('foto2.png')">
-                                <img src="{% static 'img/foto3.png' %}" alt="Foto 3" width="80" height="80" onclick="selecionarFoto('foto3.png')">
+                            <div id="janelaFotos" >
+                                <h3 style="margin-bottom: 20px; font-size: 20px; color: #333;">Escolha sua nova foto de perfil</h3>
+                                
+                                <!-- Botão para fechar -->
+                                <button onclick="fecharModal()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer;">&times;</button>
+                                
+                                <!-- Container do carrossel -->
+                                <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+                                    <!-- Botão de navegação esquerda -->
+                                    <button id="btnEsquerda" style="background: none; border: none; font-size: 30px; cursor: pointer; position: absolute; left: 10px; z-index: 10; color: #333;">&#8249;</button>
+                                    
+                                    <!-- Área de imagens -->
+                                    <div id="carousel" style="display: flex; overflow: hidden; width: 400px; height: 100px;">
+                                        <div id="carouselInner" style="display: flex; transition: transform 0.3s ease;">
+                                            <img class="fotoperfilUsuario" src="{% static 'img/foto1.png' %}" alt="Foto 1"onclick="selecionarFoto('foto1.png')">
+                                            <img class="fotoperfilUsuario" src="{% static 'img/foto2.png' %}" alt="Foto 2" onclick="selecionarFoto('foto2.png')">
+                                            <img class="fotoperfilUsuario" src="{% static 'img/foto3.png' %}" alt="Foto 3" onclick="selecionarFoto('foto3.png')">
+                                            <img class="fotoperfilUsuario" src="{% static 'img/foto4.png' %}" alt="Foto 4" onclick="selecionarFoto('foto4.png')">
+                                            <img class="fotoperfilUsuario" src="{% static 'img/foto5.png' %}" alt="Foto 5" onclick="selecionarFoto('foto5.png')">
+                                            <img class="fotoperfilUsuario" src="{% static 'img/foto6.png' %}" alt="Foto 6" onclick="selecionarFoto('foto6.png')">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Botão de navegação direita -->
+                                    <button id="btnDireita" style="background: none; border: none; font-size: 30px; cursor: pointer; position: absolute; right: 10px; z-index: 10; color: #333;">&#8250;</button>
+                                </div>
+
                             </div>
-                            <button type="button" onclick="fecharModal()">Cancelar</button>
                         </div>
-                    </div>
                     <label for="novo_nome">Nome de usuário</label>
                     <input type="text" name="novo_nome" class="dados_novos" value="{{ user.username }}" required>
                     <label for="novo_email">E-mail</label>
@@ -80,32 +96,6 @@
         </div>
     </div>
     <script>
-    const caminhoBase = "{% static 'img/' %}";
-
-    function abrirModal() {
-        document.getElementById('modalFotos').style.display = 'flex';
-        setTimeout(() => {
-            document.querySelector('#modalFotos .modal-content').focus();
-        }, 100);
-    }
-
-    function fecharModal() {
-        document.getElementById('modalFotos').style.display = 'none';
-    }
-
-    function selecionarFoto(nomeFoto) {
-        document.getElementById('foto').value = nomeFoto;
-        document.getElementById('preview').src = caminhoBase + nomeFoto;
-        fecharModal();
-    }
-
-    // Fechar modal ao pressionar ESC
-    document.addEventListener('keydown', function(event) {
-        if (event.key === "Escape") {
-            fecharModal();
-        }
-    });
-
     // Preview de senha (olhinho)
     document.querySelectorAll('input[type="password"]').forEach(function(input) {
         const eye = document.createElement('span');
@@ -140,5 +130,6 @@
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
     <script src="{% static 'js/menu.js' %}"></script>
+    <script src="{% static 'js/cadastro.js' %}"></script>
 </body>
 </html>
