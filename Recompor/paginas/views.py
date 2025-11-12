@@ -33,6 +33,9 @@ class TutorialCaixa3View(TemplateView):
 class MateriaisCaixaM(TemplateView):
     template_name = "materiaisCaixaM.html"  
 
+class MateriaisCaixaG(TemplateView):
+    template_name = "materiaisCaixaG.html"
+
 
 
 @login_required

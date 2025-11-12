@@ -1,6 +1,6 @@
 
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.models import User 
 from composteira import models
 from django.contrib.auth import authenticate, login, logout
@@ -101,14 +101,43 @@ def editar_perfil(request):
         # Atualiza nome e email do usuário
         user = request.user
         if novo_nome and novo_nome != user.username:
+            # Verifica se o novo nome já está em uso por outro usuário
+            if User.objects.filter(username=novo_nome).exclude(pk=user.pk).exists():
+                # Se for uma requisição AJAX, retorne JSON de erro sem redirecionar
+                if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+                    return JsonResponse({'success': False, 'error': 'Nome de usuário já está em uso.'}, status=400)
+                messages.error(request, "Nome de usuário já está em uso.")
+                return redirect("usuarios:conta")
             user.username = novo_nome
         if novo_email and novo_email != user.email:
             user.email = novo_email
         user.save()
 
+        # Se for AJAX, retorne JSON de sucesso para não recarregar a página
+        if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+            return JsonResponse({'success': True, 'message': 'Perfil atualizado com sucesso!', 'username': user.username})
+
         messages.success(request, "Perfil atualizado com sucesso!")
         return redirect("paginas:home")
     return render(request, "usuarios/conta.html")
+
+
+@login_required
+def username_available(request):
+    """Endpoint AJAX: verifica se um nome de usuário já está em uso.
+
+    Retorna JSON: {"available": true/false}
+    """
+    username = request.GET.get('username', '').strip()
+    if not username:
+        return JsonResponse({'available': False})
+
+    # Se o nome for o mesmo do usuário atual, consideramos disponível
+    if request.user.is_authenticated and username == request.user.username:
+        return JsonResponse({'available': True})
+
+    exists = User.objects.filter(username=username).exists()
+    return JsonResponse({'available': not exists})
 
 
 @login_required

@@ -13,6 +13,7 @@ urlpatterns = [
     path('tutorialCaixa2', TutorialCaixa2View.as_view(), name = "tutCaixa2"),
     path('tutorialCaixa3', TutorialCaixa3View.as_view(), name = "tutCaixa3"),
     path('materiaisCaixaM/', MateriaisCaixaM.as_view(), name="caixaM"),
+    path('materiaisCaixaG/', MateriaisCaixaG.as_view(), name="caixaG"),
  
     path("notificacoes/", notifications_view, name="notifications"),
     path("notificacoes/marcar/<int:notif_id>/", mark_as_read, name="mark_as_read"),

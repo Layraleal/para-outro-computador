@@ -194,7 +194,7 @@ header{
 	font-size: 25px;
 	cursor: pointer;
 	transition: opacity 0.3s ease; /* Transição suave de opacidade */
-	z-index: 1; /* Garante que o ícone fique acima de outros elementos */
+	z-index: 1003; /* Aumentado para ficar acima da barra lateral */
 }
 
 
@@ -227,7 +227,7 @@ header{
 	color: white;
 	padding: 10px;
 	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra à direita */
-	z-index: 999;
+	z-index: 1002; /* Aumentado para ficar acima dos botões mobile (z-index: 1001) */
 	transform: translateX(-100%); /* Inicialmente fora da tela, à esquerda */
 	transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out; /* Suaviza o deslizamento */
 }
@@ -877,6 +877,104 @@ header{
 	.navbar.on #nome_usuario, #img_usuario, .notificacao,.config{
 		display: none;
 	}
+}
+
+/* Estilos para os botões rápidos que aparecem apenas em mobile */
+#mobile-auth{
+	display: none; /* padrão desktop */
+}
+
+.mobile-btn{
+	display: inline-block;
+	text-decoration: none;
+	background: white;
+	color: #003B31;
+	padding: 4px 8px;
+	border-radius: 6px;
+	font-family: NunitoB;
+	font-size: 1.4rem; /* menor que antes para caber na navbar */
+	margin-left: 6px;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+}
+
+/* Quando o usuário está autenticado em mobile: foto + nome */
+.mobile-user{
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: transparent;
+	box-shadow: none;
+	color: #A9C435;/* garantir contraste no header escuro */
+	padding: 2px 4px;
+	border-radius: 8px;
+	text-decoration: none;
+}
+.mobile-user-img{
+ 	width: 30px;
+ 	height: 30px;
+ 	border-radius: 50%;
+ 	object-fit: cover;
+}
+.mobile-user-name{
+	font-family: NunitoB;
+	font-size: 1.4rem;
+	color: #A9C435;
+}
+
+.mobile-btn-primary{
+	background: #A9C435;
+	color: #fff;
+}
+
+@media (max-width: 520px) {
+	/* posiciona os botões DENTRO da barra (header) à direita, tamanho reduzido */
+	#mobile-auth{
+		display: flex;
+		gap: 6px;
+		align-items: center;
+		justify-content: flex-end;
+		position: absolute; /* dentro da navbar */
+		right: 12px; /* distância da borda direita */
+		top: 50%; /* centraliza verticalmente dentro da navbar */
+		transform: translateY(-50%);
+		z-index: 1001;
+		background: transparent;
+		flex-wrap: nowrap;
+	}
+
+	/* reduz o título para não competir com os botões */
+	#titulo-header{
+		font-size: 2.5rem; /* menor em mobile */
+		padding-left: 45px; /* empurra o título para a direita, evitando sobreposição com o ícone */
+		margin: 0;
+		padding-right: 8px; /* reduz espaço entre título e imagem */
+		display: flex;
+		align-items: center;
+	}
+
+	/* diminuir um pouco a imagem ao lado do título */
+	#img-logo-header{ 
+		width: 2.6rem;
+		margin-left: -4px; /* aproxima do título */
+		margin-right: 0;
+		/* escondido em telas pequenas para não aparecer ao lado do título */
+		display: none;
+	}
+
+	/* ajusta o container para manter título e logo próximos */
+	#conteudo-esquerda-hearder{
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	/* força os botões para um tamanho mais compacto quando o espaço for reduzido */
+	.mobile-btn{ font-size: 1.2rem; padding: 4px 6px; }
+}
+
+@media (max-width: 360px) {
+	#mobile-auth{ right: 8px; }
+	.mobile-btn{ font-size: 1.2rem; padding: 3px 6px; }
 }
 
 /* Adaptação dos elementos em telas menores que 360px */

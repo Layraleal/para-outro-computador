@@ -275,4 +275,63 @@ input[type='file'] {
     body#config-conta .delete-btn {
         width: 100%;
     }
+
+    /* Melhorias adicionais para responsividade: empilhar colunas e botões, ajustar imagens */
+    body#config-conta .first-content {
+        flex-direction: column;
+        gap: 18px;
+        align-items: stretch;
+    }
+    body#config-conta .first-column,
+    body#config-conta .second-column {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 12px;
+        box-sizing: border-box;
+    }
+    body#config-conta .first-column {
+        text-align: center;
+        order: 1;
+        padding-top: 8px;
+    }
+    body#config-conta .second-column {
+        order: 2;
+    }
+
+    /* Fotos e avatar menores para caber em telas pequenas */
+    body#config-conta .imageContainer img,
+    body#config-conta .fotoperfilUsuario,
+    #imgPhoto {
+        width: 72px;
+        height: 72px;
+    }
+
+    /* Garantir que os botões apareçam um embaixo do outro com espaçamento reduzido */
+    body#config-conta .button,
+    body#config-conta .botaoFoto,
+    body#config-conta .delete-btn {
+        display: block;
+        width: 100%;
+        justify-content: center;
+        margin: 1px 0; /* reduzido para aproximar os botões */
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+
+    /* Em formulários com vários botões em linha, forçar quebra e empilhamento */
+    body#config-conta .actions-row {
+        display: flex;
+        flex-direction: column;
+        gap: 6px; /* gap reduzido para aproximar os botões verticalmente */
+    }
+
+    /* reduzir o espaçamento entre seções (por exemplo: entre Alterar Senha e Excluir Conta) */
+    body#config-conta .settings {
+        margin-top: 12px;
+    }
+
+    body#config-conta .settings h2 {
+        margin-bottom: 6px;
+        padding-bottom: 4px;
+    }
 }

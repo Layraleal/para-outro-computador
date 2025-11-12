@@ -70,9 +70,9 @@
                 <!-- FORMULÁRIO DE CADASTRO -->
                 <form action="{% url 'usuarios:entrar' %}" id="form_contato" class="form" method="post" novalidate>
                     {% csrf_token %}
-                  
+                    <!-- Campo: Escolher Foto de Perfil -->
                     <div class="imageContainer" style="text-align: center;">
-                       
+                        <!-- Campo escondido que envia a foto selecionada -->
                         <input type="hidden" id="foto" name="foto" value="icon_user.png">
 
                        <!-- Imagem de pré-visualização -->

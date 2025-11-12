@@ -36,13 +36,12 @@
                 <p class = "ppp">Escala</P>
                 <p class = "escolha">
                     <div class = space> 
-                        <a class = 'aaa' href="{% url 'paginas:matCaixa' %}"><button class = "escolha-btn" style="background-color: #7F9838;"></button></a><p class = "lado">Pequena</p>
+                        <a class = 'aaa' href="{% url 'paginas:matCaixa' %}"><button class = "escolha-btn" title="Composteira de 1,5L à 2L" style="background-color: #7F9838;"></button></a><p class = "lado">Pequena</p>
+                    <div class = space> 
+                        <a class = 'aaa' href="{% url 'paginas:caixaM' %}"><button class = "escolha-btn" title="Composteira de 4L"></button></a><p class = "lado"> Média</p>
                     </div>
                     <div class = space> 
-                        <a class = 'aaa' href="{% url 'paginas:caixaM' %}"><button class = "escolha-btn"></button></a><p class = "lado"> Média</p>
-                    </div>
-                    <div class = space> 
-                        <a class = 'aaa' href="{% url 'paginas:caixaM' %}"><button class = "escolha-btn"></button></a><p class = "lado"> Grande</p>
+                        <a class = 'aaa' href="{% url 'paginas:caixaG' %}"><button class = "escolha-btn" title="Composteira de 6L"></button></a><p class = "lado"> Grande</p>
                     </div>
                 </p>
         </div> <!--Escala-->
@@ -86,7 +85,7 @@
             <img class = "imagensAjeitadas" src= "{% static 'img/caixa_canva.png' %}">
             <section>
                 <p class="minititulo" style="margin-top: 5%;">Três caixas (baldes) plásticas</p>
-                <p class="texto">Sendo do mesmo modelo, fechadas e com 1 tampa.</p>
+                <p class="texto">Sendo do mesmo modelo, fechadas e com 1 tampa cada.</p>
             </section>
         </div><!--Alinha imagens-->
 

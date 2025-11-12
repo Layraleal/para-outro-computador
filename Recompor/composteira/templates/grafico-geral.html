@@ -91,34 +91,37 @@
     }
 
     function filtrarPorPeriodo(periodo, mesCustomizado = null) {
-      const hoje = new Date();
-      const inicio = new Date();
+    const hoje = new Date();
+    let inicio, fim;
 
-      if (periodo === "mes-atual") {
-        inicio.setDate(1);
-      } else if (periodo === "mes-passado") {
-        inicio.setMonth(hoje.getMonth() - 1);
-        inicio.setDate(1);
-        hoje.setMonth(hoje.getMonth() - 1);
-      } else if (periodo === "ano") {
-        inicio.setMonth(0);
-        inicio.setDate(1);
-      } else if (periodo === "personalizado" && mesCustomizado) {
-        const [ano, mes] = mesCustomizado.split("-");
-        inicio.setFullYear(ano, mes - 1, 1);
-        hoje.setFullYear(ano, mes, 0); // último dia do mês
-      }
-
-      const filtradas = compostagens.datas.map((d, i) => {
-        const data = new Date(d);
-        return data >= inicio && data <= hoje ? i : null;
-      }).filter(i => i !== null);
-
-      const labels = filtradas.map(i => compostagens.labels[i]);
-      const pesos = filtradas.map(i => compostagens.pesos[i]);
-
-      return { labels, pesos };
+    if (periodo === "mes-atual") {
+      inicio = new Date(hoje.getFullYear(), hoje.getMonth(), 1);
+      fim = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 0);
+    } 
+    else if (periodo === "mes-passado") {
+      inicio = new Date(hoje.getFullYear(), hoje.getMonth() - 1, 1);
+      fim = new Date(hoje.getFullYear(), hoje.getMonth(), 0);
+    } 
+    else if (periodo === "ano") {
+      inicio = new Date(hoje.getFullYear(), 0, 1);
+      fim = new Date(hoje.getFullYear(), 11, 31);
+    } 
+    else if (periodo === "personalizado" && mesCustomizado) {
+      const [ano, mes] = mesCustomizado.split("-");
+      inicio = new Date(ano, mes - 1, 1);
+      fim = new Date(ano, mes, 0);
     }
+
+    const filtradas = compostagens.datas.map((d, i) => {
+      const data = new Date(d);
+      return data >= inicio && data <= fim ? i : null;
+    }).filter(i => i !== null);
+
+    const labels = filtradas.map(i => compostagens.labels[i]);
+    const pesos = filtradas.map(i => compostagens.pesos[i]);
+
+    return { labels, pesos };
+  }
 
     function atualizarGrafico(periodo, mesCustomizado = null) {
       const { labels, pesos } = filtrarPorPeriodo(periodo, mesCustomizado);
